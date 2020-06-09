@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Base{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% block css %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="container">
+            <div class="row align-items-start align-self-center justify-content-center">
+                <ul class="navbar-nav mr-auto">
+                    <div class="col-6">
+                        <a class="navbar-brand" href="{{ path('accueil') }}">
+                            <svg class="bi bi-house-fill" width="1.6em" height="1.6em" viewBox="0 0 16 16" fill="gold" xmlns="http://www.w3.org/2000/svg%22%3E">
+                                <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z"/>
+                                <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 011.414 0l6.647 6.646a.5.5 0 01-.708.708L8 2.207 1.354 8.854a.5.5 0 11-.708-.708L7.293 1.5z"/>
+                            </svg>
+                        </a>
+                        <li class="nav-item col">
+                            <a class="nav-link {% if current_accueil is defined and current_accueil == 'accueil' %} active {% endif %}" href="{{ path('accueil') }}">Accueil</a>
+                        </li>
+                    </div>
+                    <li class="nav-item col">
+                        <a class="nav-link" href="#">Boutique</a>
+                    </li>
+                    <li class="nav-item col">
+                        <a class="nav-link" href="#">Forum</a>
+                    </li>
+                    <li class="nav-item col">
+                        <a class="nav-link" href="#">Information</a>
+                    </li>
+                    <li class="nav-item col">
+                        <a class="nav-link" href="#">S'identifier</a>
+                    </li>
+                    <div class="col-6">
+                        <a class="navbar-brand" href="{{ path('accueil') }}">
+                            <svg class="bi bi-cart-check" width="1.6em" height="1.6em" viewBox="0 0 16 16" fill="gold" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                            </svg>
+                        </a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mon-panier">Mon Panier</a>
+                        </li>
+
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+{% block body %}{% endblock %}
+<!-- Footer -->
+<footer class="page-footer font-small mdb-color pt-4 sticky-bottom">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+        <!-- Footer links -->
+        <div class="row text-center text-md-left mt-3 pb-3">
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-4 col-xl-5 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Notre société</h6>
+                <p>Pour ce projet, nous, ingénieurs, avons mit en place une plateforme web qui a pour but de mettre en relation l'ensemble des parties prenantes. Elle dispose d'une partie boutique mais également d'un forum de discussion ouvert à tous. Notre FabLab associé s'occupe de la production en étant à l'écoute des retours clients.</p>
+            </div>
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Liens Utiles</h6>
+                <p>
+                    <a href="#!">Votre profil</a>
+                </p>
+                <p>
+                    <a href="#!">CGA</a>
+                </p>
+                <p>
+                    <a href="#!">CGV</a>
+                </p>
+                <p>
+                    <a href="#!">Cookies</a>
+                </p>
+            </div>
+            <hr class="w-100 clearfix d-md-none">
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                <p>CESI Ecole d'ingénieurs</p>
+                <p>Saint-Nazaire, 44600</p>
+                <p>admin@viacesi.fr</p>
+                <p>02 40 00 17 00</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row d-flex align-items-center">
+
+            <!-- Grid column -->
+            <div class="col-md-7 col-lg-8">
+
+                <!--Copyright-->
+                <p class="text-center text-md-left">© 2020 Copyright:
+                    <a href="https://saint-nazaire.cesi.fr/ecoles-formations/">
+                        <strong>CESI Saint-Nazaire</strong>
+                    </a>
+                </p>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-5 col-lg-4 ml-lg-0">
+
+                <!-- Social buttons -->
+                <div class="text-center text-md-right">
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+</footer>
+<!-- Footer -->
+{% block javascripts %}{% endblock %}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -94,6 +94,7 @@ class ComposerStaticInitf4b2e7ad041b9ddbdb317bc8cd36b746
             'Symfony\\Component\\Cache\\' => 24,
             'Symfony\\Component\\BrowserKit\\' => 29,
             'Symfony\\Component\\Asset\\' => 24,
+            'Symfony\\Bundle\\WebServerBundle\\' => 31,
             'Symfony\\Bundle\\WebProfilerBundle\\' => 33,
             'Symfony\\Bundle\\TwigBundle\\' => 26,
             'Symfony\\Bundle\\SecurityBundle\\' => 30,
@@ -389,6 +390,10 @@ class ComposerStaticInitf4b2e7ad041b9ddbdb317bc8cd36b746
         array (
             0 => __DIR__ . '/..' . '/symfony/asset',
         ),
+        'Symfony\\Bundle\\WebServerBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/web-server-bundle',
+        ),
         'Symfony\\Bundle\\WebProfilerBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/web-profiler-bundle',
@@ -557,6 +562,27 @@ class ComposerStaticInitf4b2e7ad041b9ddbdb317bc8cd36b746
     );
 
     public static $classMap = array (
+        'App\\Entity\\Categories' => __DIR__ . '/../..' . '/src/Entity/Categories.php',
+        'App\\Entity\\Comments' => __DIR__ . '/../..' . '/src/Entity/Comments.php',
+        'App\\Entity\\Contains' => __DIR__ . '/../..' . '/src/Entity/Contains.php',
+        'App\\Entity\\Images' => __DIR__ . '/../..' . '/src/Entity/Images.php',
+        'App\\Entity\\Orders' => __DIR__ . '/../..' . '/src/Entity/Orders.php',
+        'App\\Entity\\Products' => __DIR__ . '/../..' . '/src/Entity/Products.php',
+        'App\\Entity\\Status' => __DIR__ . '/../..' . '/src/Entity/Status.php',
+        'App\\Entity\\Subjects' => __DIR__ . '/../..' . '/src/Entity/Subjects.php',
+        'App\\Entity\\Types' => __DIR__ . '/../..' . '/src/Entity/Types.php',
+        'App\\Entity\\Users' => __DIR__ . '/../..' . '/src/Entity/Users.php',
+        'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'App\\Repository\\CategoriesRepository' => __DIR__ . '/../..' . '/src/Repository/CategoriesRepository.php',
+        'App\\Repository\\CommentsRepository' => __DIR__ . '/../..' . '/src/Repository/CommentsRepository.php',
+        'App\\Repository\\ContainsRepository' => __DIR__ . '/../..' . '/src/Repository/ContainsRepository.php',
+        'App\\Repository\\ImagesRepository' => __DIR__ . '/../..' . '/src/Repository/ImagesRepository.php',
+        'App\\Repository\\OrdersRepository' => __DIR__ . '/../..' . '/src/Repository/OrdersRepository.php',
+        'App\\Repository\\ProductsRepository' => __DIR__ . '/../..' . '/src/Repository/ProductsRepository.php',
+        'App\\Repository\\StatusRepository' => __DIR__ . '/../..' . '/src/Repository/StatusRepository.php',
+        'App\\Repository\\SubjectsRepository' => __DIR__ . '/../..' . '/src/Repository/SubjectsRepository.php',
+        'App\\Repository\\TypesRepository' => __DIR__ . '/../..' . '/src/Repository/TypesRepository.php',
+        'App\\Repository\\UsersRepository' => __DIR__ . '/../..' . '/src/Repository/UsersRepository.php',
         'Collator' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/Collator.php',
         'Doctrine\\Bundle\\DoctrineBundle\\Command\\CreateDatabaseDoctrineCommand' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Command/CreateDatabaseDoctrineCommand.php',
         'Doctrine\\Bundle\\DoctrineBundle\\Command\\DoctrineCommand' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Command/DoctrineCommand.php',
@@ -2556,6 +2582,15 @@ class ComposerStaticInitf4b2e7ad041b9ddbdb317bc8cd36b746
         'Symfony\\Bundle\\WebProfilerBundle\\Profiler\\TemplateManager' => __DIR__ . '/..' . '/symfony/web-profiler-bundle/Profiler/TemplateManager.php',
         'Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension' => __DIR__ . '/..' . '/symfony/web-profiler-bundle/Twig/WebProfilerExtension.php',
         'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle' => __DIR__ . '/..' . '/symfony/web-profiler-bundle/WebProfilerBundle.php',
+        'Symfony\\Bundle\\WebServerBundle\\Command\\ServerLogCommand' => __DIR__ . '/..' . '/symfony/web-server-bundle/Command/ServerLogCommand.php',
+        'Symfony\\Bundle\\WebServerBundle\\Command\\ServerRunCommand' => __DIR__ . '/..' . '/symfony/web-server-bundle/Command/ServerRunCommand.php',
+        'Symfony\\Bundle\\WebServerBundle\\Command\\ServerStartCommand' => __DIR__ . '/..' . '/symfony/web-server-bundle/Command/ServerStartCommand.php',
+        'Symfony\\Bundle\\WebServerBundle\\Command\\ServerStatusCommand' => __DIR__ . '/..' . '/symfony/web-server-bundle/Command/ServerStatusCommand.php',
+        'Symfony\\Bundle\\WebServerBundle\\Command\\ServerStopCommand' => __DIR__ . '/..' . '/symfony/web-server-bundle/Command/ServerStopCommand.php',
+        'Symfony\\Bundle\\WebServerBundle\\DependencyInjection\\WebServerExtension' => __DIR__ . '/..' . '/symfony/web-server-bundle/DependencyInjection/WebServerExtension.php',
+        'Symfony\\Bundle\\WebServerBundle\\WebServer' => __DIR__ . '/..' . '/symfony/web-server-bundle/WebServer.php',
+        'Symfony\\Bundle\\WebServerBundle\\WebServerBundle' => __DIR__ . '/..' . '/symfony/web-server-bundle/WebServerBundle.php',
+        'Symfony\\Bundle\\WebServerBundle\\WebServerConfig' => __DIR__ . '/..' . '/symfony/web-server-bundle/WebServerConfig.php',
         'Symfony\\Component\\Asset\\Context\\ContextInterface' => __DIR__ . '/..' . '/symfony/asset/Context/ContextInterface.php',
         'Symfony\\Component\\Asset\\Context\\NullContext' => __DIR__ . '/..' . '/symfony/asset/Context/NullContext.php',
         'Symfony\\Component\\Asset\\Context\\RequestStackContext' => __DIR__ . '/..' . '/symfony/asset/Context/RequestStackContext.php',
