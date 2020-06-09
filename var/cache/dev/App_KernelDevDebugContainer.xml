@@ -330,6 +330,46 @@
       <tag name="controller.service_arguments"/>
       <tag name="routing.route_loader"/>
     </service>
+    <service id="App\Repository\CategoriesRepository" class="App\Repository\CategoriesRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\CommentsRepository" class="App\Repository\CommentsRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ContainsRepository" class="App\Repository\ContainsRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ImagesRepository" class="App\Repository\ImagesRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\OrdersRepository" class="App\Repository\OrdersRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ProductsRepository" class="App\Repository\ProductsRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\StatusRepository" class="App\Repository\StatusRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\SubjectsRepository" class="App\Repository\SubjectsRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\TypesRepository" class="App\Repository\TypesRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory" public="false"/>
     <service id="response_listener" class="Symfony\Component\HttpKernel\EventListener\ResponseListener" public="false">
       <tag name="kernel.event_subscriber"/>
@@ -4177,7 +4217,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.0yahJpG"/>
+      <argument type="service" id=".service_locator.dS6l4mX"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4790,6 +4830,26 @@
       <tag name="maker.command"/>
       <argument>D:\Wamp64\www\solidarityBond</argument>
     </service>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategoriesRepository" class="App\Repository\CategoriesRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CategoriesRepository" class="App\Repository\CategoriesRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentsRepository" class="App\Repository\CommentsRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CommentsRepository" class="App\Repository\CommentsRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContainsRepository" class="App\Repository\ContainsRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ContainsRepository" class="App\Repository\ContainsRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ImagesRepository" class="App\Repository\ImagesRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ImagesRepository" class="App\Repository\ImagesRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\OrdersRepository" class="App\Repository\OrdersRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\OrdersRepository" class="App\Repository\OrdersRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProductsRepository" class="App\Repository\ProductsRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ProductsRepository" class="App\Repository\ProductsRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\StatusRepository" class="App\Repository\StatusRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\StatusRepository" class="App\Repository\StatusRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\SubjectsRepository" class="App\Repository\SubjectsRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\SubjectsRepository" class="App\Repository\SubjectsRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TypesRepository" class="App\Repository\TypesRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\TypesRepository" class="App\Repository\TypesRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.WaGDpDt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5146,9 +5206,20 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.0yahJpG" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.dS6l4mX" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="App\Repository\CategoriesRepository" type="service" id="App\Repository\CategoriesRepository"/>
+        <argument key="App\Repository\CommentsRepository" type="service" id="App\Repository\CommentsRepository"/>
+        <argument key="App\Repository\ContainsRepository" type="service" id="App\Repository\ContainsRepository"/>
+        <argument key="App\Repository\ImagesRepository" type="service" id="App\Repository\ImagesRepository"/>
+        <argument key="App\Repository\OrdersRepository" type="service" id="App\Repository\OrdersRepository"/>
+        <argument key="App\Repository\ProductsRepository" type="service" id="App\Repository\ProductsRepository"/>
+        <argument key="App\Repository\StatusRepository" type="service" id="App\Repository\StatusRepository"/>
+        <argument key="App\Repository\SubjectsRepository" type="service" id="App\Repository\SubjectsRepository"/>
+        <argument key="App\Repository\TypesRepository" type="service" id="App\Repository\TypesRepository"/>
+        <argument key="App\Repository\UsersRepository" type="service" id="App\Repository\UsersRepository"/>
+      </argument>
     </service>
     <service id="monolog.logger.request" class="Symfony\Bridge\Monolog\Logger">
       <argument>request</argument>
