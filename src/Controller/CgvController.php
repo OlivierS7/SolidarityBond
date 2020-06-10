@@ -8,12 +8,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class CgvController extends AbstractController {
 
     /**
-     * /**
-     * @Route("/cgv", name="cgv")
+     * @Route("/conditions-generales-de-vente", name="cgv")
      * @return Response
      */
     public function index() : Response {
-      return $this->render('cgv/cgv.html.twig');
+        return $this->render('mentionsLegales/cgv.html.twig');
     }
 
 }
