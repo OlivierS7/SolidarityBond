@@ -342,6 +342,13 @@
         <argument type="service" id=".service_locator.g9CqTPp.App\Controller\AccueilController"/>
       </call>
     </service>
+    <service id="App\Controller\CgaController" class="App\Controller\CgaController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\CgaController"/>
+      </call>
+    </service>
     <service id="App\Controller\CgvController" class="App\Controller\CgvController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -4897,6 +4904,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AccueilController" class="App\Controller\AccueilController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AccueilController" class="App\Controller\AccueilController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AccueilController" class="App\Controller\AccueilController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CgaController" class="App\Controller\CgaController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CgaController" class="App\Controller\CgaController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CgaController" class="App\Controller\CgaController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CgvController" class="App\Controller\CgvController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CgvController" class="App\Controller\CgvController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CgvController" class="App\Controller\CgvController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5475,6 +5485,12 @@
     <service id=".service_locator.g9CqTPp.App\Controller\AccueilController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\AccueilController"/>
       <argument>App\Controller\AccueilController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\CgaController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\CgaController"/>
+      <argument>App\Controller\CgaController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.g9CqTPp" method="withContext"/>
     </service>

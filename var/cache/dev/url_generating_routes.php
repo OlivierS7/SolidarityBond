@@ -16,5 +16,6 @@ return [
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     'accueil' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/accueil']], [], []],
+    'cga' => [[], ['_controller' => 'App\\Controller\\CgaController::index'], [], [['text', '/cga']], [], []],
     'cgv' => [[], ['_controller' => 'App\\Controller\\CgvController::index'], [], [['text', '/cgv']], [], []],
 ];
