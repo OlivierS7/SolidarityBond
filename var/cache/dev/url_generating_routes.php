@@ -16,5 +16,8 @@ return [
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     'accueil' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], []],
+    'login' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::login'], [], [['text', '/se-connecter']], [], []],
+    'register' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::register'], [], [['text', '/enregistrer']], [], []],
+    'logout' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::index'], [], [['text', '/se-deconnecter']], [], []],
     'cgv' => [[], ['_controller' => 'App\\Controller\\CgvController::index'], [], [['text', '/conditions-generales-de-vente']], [], []],
 ];
