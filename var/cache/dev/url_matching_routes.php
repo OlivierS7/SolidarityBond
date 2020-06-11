@@ -13,9 +13,12 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
-        '/accueil' => [[['_route' => 'accueil', '_controller' => 'App\\Controller\\AccueilController::index'], null, null, null, false, false, null]],
-        '/cga' => [[['_route' => 'cga', '_controller' => 'App\\Controller\\CgaController::index'], null, null, null, false, false, null]],
-        '/cgv' => [[['_route' => 'cgv', '_controller' => 'App\\Controller\\CgvController::index'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'accueil', '_controller' => 'App\\Controller\\AccueilController::index'], null, null, null, false, false, null]],
+        '/se-connecter' => [[['_route' => 'login', '_controller' => 'App\\Controller\\AuthentificationController::login'], null, null, null, false, false, null]],
+        '/enregistrer' => [[['_route' => 'register', '_controller' => 'App\\Controller\\AuthentificationController::register'], null, null, null, false, false, null]],
+        '/se-deconnecter' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\AuthentificationController::index'], null, null, null, false, false, null]],
+        '/cga' => [[['_route' => 'cga', '_controller' => 'App\\Controller\\LegalController::render_cga'], null, null, null, false, false, null]],
+        '/conditions-generales-de-vente' => [[['_route' => 'cgv', '_controller' => 'App\\Controller\\LegalController::render_cgv'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
