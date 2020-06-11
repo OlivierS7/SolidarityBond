@@ -8,7 +8,7 @@
     {% block css %}{% endblock %}
 </head>
 
-<body style="margin-top: 60px;">
+<body style="margin-top: 55px;">
     <!-- NavBar -->
     <nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +19,7 @@
             <div class="container">
                 <ul class="navbar-nav mr-auto">
                     <!-- Accueil -->
-                    <div class="col-4 d-inline-flex">
+                    <div class="col-{% if not app.user %}4{% endif %}{% if app.user %}3{% endif %} d-inline-flex">
                         <a class="navbar-brand" href="{{ path('accueil') }}">
                             <svg class="bi bi-house-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="gold" xmlns="http://www.w3.org/2000/svg%22%3E">
                                 <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z"/>
@@ -42,20 +42,29 @@
                     <li class="nav-item col-2 text-center">
                         <a class="nav-link" href="#">Information</a>
                     </li>
+                    <!-- Profil (connecté) -->
+                    {% if app.user %}
+                        <li class="nav-item col-2 text-center">
+                            <a class="nav-link" href="#">Profil</a>
+                        </li>
+                    {% endif %}
                     <!-- S'identifier -->
-                    <li class="nav-item col-2 text-center">
-                        <a class="nav-link text-warning" href="#">S'identifier</a>
+                    <li class="nav-item col-3 text-center">
+                        {% if app.user %}
+                            <a class="nav-link text-warning" href="{{ path('logout') }}">Se déconnecter</a>
+                        {% endif %}
+                        <a {% if app.user %} hidden {% endif %} class="nav-link text-warning" href="{{ path('login') }}">S'identifier</a>
                     </li>
                     <!-- Mon Panier -->
-                    <div class="col-4 d-inline-flex justify-content-end">
-                        <a class="navbar-brand" href="{{ path('accueil') }}">
+                    <div class="col-4 d-inline-flex">
+                        <a class="navbar-brand" href="#">
                             <svg class="bi bi-cart-check" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="gold" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z" clip-rule="evenodd"/>
                                 <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
                             </svg>
                         </a>
                         <li class="nav-item">
-                            <a class="nav-link" href="mon-panier">Mon Panier</a>
+                            <a class="nav-link" href="#">Panier</a>
                         </li>
                     </div>
                 </ul>
@@ -64,8 +73,9 @@
     </nav>
     {% block body %}{% endblock %}
 
+    <br/><br/>
     <!-- Footer -->
-    <footer class="page-footer font-small mdb-color pt-4 sticky-bottom bg-dark text-white">
+    <footer class="font-small mdb-color pt-4 bg-dark text-white">
         <div class="container text-center text-md-left">
             <div class="row text-center text-md-left mt-3 pb-3">
                 <!-- Notre Société -->
@@ -83,13 +93,13 @@
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold text-warning">Liens Utiles</h6>
                     <p>
-                        <a href="#!">Votre profil</a>
+                        <a href="#!">Profil</a>
                     </p>
                     <p>
                         <a href="#!">CGA</a>
                     </p>
                     <p>
-                        <a href="#!">CGV</a>
+                        <a href="{{ path('cgv') }}">CGV</a>
                     </p>
                     <p>
                         <a href="#!">Cookies</a>

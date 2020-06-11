@@ -1,7 +1,11 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory: { memory: null }
+        from_database:
+            entity:
+                class: App\Entity\Users
+                property: email
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -9,7 +13,14 @@ security:
         main:
             anonymous: true
             lazy: true
-            provider: users_in_memory
+
+            form_login:
+                login_path: /se-connecter
+                check_path: /se-connecter
+
+            logout:
+                path: /se-deconnecter
+                target: /
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -22,3 +33,8 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+    encoders:
+        App\Entity\Users:
+            algorithm: bcrypt
+            cost: 13
