@@ -36,6 +36,7 @@
                     <div class="text-center">
                         <br />
                         <button type="submit" class="btn btn-warning">Se connecter</button>
+                        <input type="hidden" name="_token" value="{{ csrf_token('loginToken') }}">
                         <br /><br />
                         <p>Vous n'avez pas de compte ? <a href="{{ path('register') }}" class="text-warning">Enregistrez-vous</a></p>
                     </div>

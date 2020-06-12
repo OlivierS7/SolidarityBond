@@ -108,6 +108,10 @@ class ComposerStaticInitf4b2e7ad041b9ddbdb317bc8cd36b746
             'Symfony\\Bridge\\Doctrine\\' => 24,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
         ),
+        'R' => 
+        array (
+            'Rollerworks\\Component\\PasswordStrength\\' => 39,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -442,6 +446,10 @@ class ComposerStaticInitf4b2e7ad041b9ddbdb317bc8cd36b746
         array (
             0 => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src',
         ),
+        'Rollerworks\\Component\\PasswordStrength\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
@@ -563,6 +571,8 @@ class ComposerStaticInitf4b2e7ad041b9ddbdb317bc8cd36b746
 
     public static $classMap = array (
         'App\\Controller\\AccueilController' => __DIR__ . '/../..' . '/src/Controller/AccueilController.php',
+        'App\\Controller\\AuthentificationController' => __DIR__ . '/../..' . '/src/Controller/AuthentificationController.php',
+        'App\\Controller\\LegalController' => __DIR__ . '/../..' . '/src/Controller/LegalController.php',
         'App\\Entity\\Categories' => __DIR__ . '/../..' . '/src/Entity/Categories.php',
         'App\\Entity\\Comments' => __DIR__ . '/../..' . '/src/Entity/Comments.php',
         'App\\Entity\\Contains' => __DIR__ . '/../..' . '/src/Entity/Contains.php',
@@ -573,6 +583,7 @@ class ComposerStaticInitf4b2e7ad041b9ddbdb317bc8cd36b746
         'App\\Entity\\Subjects' => __DIR__ . '/../..' . '/src/Entity/Subjects.php',
         'App\\Entity\\Types' => __DIR__ . '/../..' . '/src/Entity/Types.php',
         'App\\Entity\\Users' => __DIR__ . '/../..' . '/src/Entity/Users.php',
+        'App\\Form\\AuthentificationType' => __DIR__ . '/../..' . '/src/Form/AuthentificationType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'App\\Repository\\CategoriesRepository' => __DIR__ . '/../..' . '/src/Repository/CategoriesRepository.php',
         'App\\Repository\\CommentsRepository' => __DIR__ . '/../..' . '/src/Repository/CommentsRepository.php',
@@ -2170,6 +2181,30 @@ class ComposerStaticInitf4b2e7ad041b9ddbdb317bc8cd36b746
         'Psr\\Log\\Test\\DummyTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/DummyTest.php',
         'Psr\\Log\\Test\\LoggerInterfaceTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
         'Psr\\Log\\Test\\TestLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/TestLogger.php',
+        'Rollerworks\\Component\\PasswordStrength\\Blacklist\\ArrayProvider' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Blacklist/ArrayProvider.php',
+        'Rollerworks\\Component\\PasswordStrength\\Blacklist\\BlacklistProviderInterface' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Blacklist/BlacklistProviderInterface.php',
+        'Rollerworks\\Component\\PasswordStrength\\Blacklist\\ChainProvider' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Blacklist/ChainProvider.php',
+        'Rollerworks\\Component\\PasswordStrength\\Blacklist\\LazyChainProvider' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Blacklist/LazyChainProvider.php',
+        'Rollerworks\\Component\\PasswordStrength\\Blacklist\\NoopProvider' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Blacklist/NoopProvider.php',
+        'Rollerworks\\Component\\PasswordStrength\\Blacklist\\PdoProvider' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Blacklist/PdoProvider.php',
+        'Rollerworks\\Component\\PasswordStrength\\Blacklist\\SqliteProvider' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Blacklist/SqliteProvider.php',
+        'Rollerworks\\Component\\PasswordStrength\\Blacklist\\UpdatableBlacklistProviderInterface' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Blacklist/UpdatableBlacklistProviderInterface.php',
+        'Rollerworks\\Component\\PasswordStrength\\Command\\BlacklistCommand' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Command/BlacklistCommand.php',
+        'Rollerworks\\Component\\PasswordStrength\\Command\\BlacklistCommonCommand' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Command/BlacklistCommonCommand.php',
+        'Rollerworks\\Component\\PasswordStrength\\Command\\BlacklistDeleteCommand' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Command/BlacklistDeleteCommand.php',
+        'Rollerworks\\Component\\PasswordStrength\\Command\\BlacklistListCommand' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Command/BlacklistListCommand.php',
+        'Rollerworks\\Component\\PasswordStrength\\Command\\BlacklistPurgeCommand' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Command/BlacklistPurgeCommand.php',
+        'Rollerworks\\Component\\PasswordStrength\\Command\\BlacklistUpdateCommand' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Command/BlacklistUpdateCommand.php',
+        'Rollerworks\\Component\\PasswordStrength\\P0wnedPassword\\Request\\Client' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/P0wnedPassword/Request/Client.php',
+        'Rollerworks\\Component\\PasswordStrength\\P0wnedPassword\\Request\\Result' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/P0wnedPassword/Request/Result.php',
+        'Rollerworks\\Component\\PasswordStrength\\Validator\\Constraints\\Blacklist' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Validator/Constraints/Blacklist.php',
+        'Rollerworks\\Component\\PasswordStrength\\Validator\\Constraints\\BlacklistValidator' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Validator/Constraints/BlacklistValidator.php',
+        'Rollerworks\\Component\\PasswordStrength\\Validator\\Constraints\\P0wnedPassword' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Validator/Constraints/P0wnedPassword.php',
+        'Rollerworks\\Component\\PasswordStrength\\Validator\\Constraints\\P0wnedPasswordValidator' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Validator/Constraints/P0wnedPasswordValidator.php',
+        'Rollerworks\\Component\\PasswordStrength\\Validator\\Constraints\\PasswordRequirements' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Validator/Constraints/PasswordRequirements.php',
+        'Rollerworks\\Component\\PasswordStrength\\Validator\\Constraints\\PasswordRequirementsValidator' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Validator/Constraints/PasswordRequirementsValidator.php',
+        'Rollerworks\\Component\\PasswordStrength\\Validator\\Constraints\\PasswordStrength' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Validator/Constraints/PasswordStrength.php',
+        'Rollerworks\\Component\\PasswordStrength\\Validator\\Constraints\\PasswordStrengthValidator' => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src/Validator/Constraints/PasswordStrengthValidator.php',
         'Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Cache' => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src/Configuration/Cache.php',
         'Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\ConfigurationAnnotation' => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src/Configuration/ConfigurationAnnotation.php',
         'Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\ConfigurationInterface' => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src/Configuration/ConfigurationInterface.php',

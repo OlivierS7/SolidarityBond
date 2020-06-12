@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class LegalController extends AbstractController {
 
     /**
-     * /**
      * @Route("/conditions-generales-d-achat", name="cga")
      * @return Response
      */

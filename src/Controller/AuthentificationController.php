@@ -71,7 +71,7 @@ class AuthentificationController extends AbstractController {
      * @Route("/se-deconnecter", name="logout")
      * @return Response
      */
-    public function index() : Response {
+    public function logout() : Response {
         return $this->render('accueil/accueil.html.twig', [
             'current_accueil' => 'accueil'
         ]);
