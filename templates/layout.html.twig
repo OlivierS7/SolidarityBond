@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr" style="height: 100%;">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}CESI Saint-Nazaire{% endblock %}</title>
+    <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% block css %}{% endblock %}
 </head>
 
-<body style="min-height: 100%; position: relative; padding-bottom: 25em; margin-top: 55px;">
+<body>
     <!-- NavBar -->
     <nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +77,7 @@
     <br/><br/>
 
     <!-- Footer -->
-    <footer class="font-small mdb-color pt-4 bg-dark text-white" style="position: absolute; bottom: 0; width: 100%;">
+    <footer class="font-small mdb-color pt-4 bg-dark text-white">
         <div class="container text-center text-md-left">
             <div class="row text-center text-md-left mt-3 pb-3">
                 <!-- Notre Société -->

@@ -1,0 +1,39 @@
+.bandeau
+{
+    width: 100%;
+    height: 355px;
+}
+
+@media screen and (max-width: 1700px) {
+    .bandeau
+    {
+        height: 330px;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .bandeau
+    {
+        height: 310px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .bandeau
+    {
+        height: 290px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .bandeau
+    {
+        width: 100%;
+        height: 100%;
+    }
+
+    .top-text
+    {
+        margin-top: 25px;
+    }
+}

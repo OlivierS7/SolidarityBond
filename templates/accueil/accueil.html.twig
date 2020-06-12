@@ -2,6 +2,10 @@
 
 {% block title 'Accueil' %}
 
+{% block css %}
+    <link rel="stylesheet" href="css/accueil.css">
+{% endblock %}
+
 {% block body %}
     <div class="jumbotron">
         <div class="row">
@@ -11,11 +15,10 @@
         </div>
         <br />
         <div class="row justify-content-center">
-            <div class="col-xl-8 d-inline-flex">
-                <img width="100%" height="355" src="images/accueil/bandeau.jpg" alt="Bandeau">
+            <div class="col-md-6 d-inline-flex">
+                <img class="bandeau" src="images/accueil/bandeau.jpg" alt="Bandeau">
             </div>
-            <div class="col-xl-4">
-                <br />
+            <div class="col-xl-4 top-text">
                 <h4>Solidarity Bond</h4>
                 <br />
                 <p class="text-justify">Cette crise sanitaire sans précédent, mettrait encore plus à mal la France si l’ensemble des organisations ne retrouvent pas
