@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="height: 100%;">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     {% block css %}{% endblock %}
 </head>
 
-<body style="margin-top: 55px;">
+<body style="min-height: 100%; position: relative; padding-bottom: 25em; margin-top: 55px;">
     <!-- NavBar -->
     <nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,8 +74,9 @@
     {% block body %}{% endblock %}
 
     <br/><br/>
+
     <!-- Footer -->
-    <footer class="font-small mdb-color pt-4 bg-dark text-white">
+    <footer class="font-small mdb-color pt-4 bg-dark text-white" style="position: absolute; bottom: 0; width: 100%;">
         <div class="container text-center text-md-left">
             <div class="row text-center text-md-left mt-3 pb-3">
                 <!-- Notre Société -->
@@ -96,7 +97,7 @@
                         <a href="#!">Profil</a>
                     </p>
                     <p>
-                        <a href="#!">CGA</a>
+                        <a href="{{ path('cga') }}">CGA</a>
                     </p>
                     <p>
                         <a href="{{ path('cgv') }}">CGV</a>

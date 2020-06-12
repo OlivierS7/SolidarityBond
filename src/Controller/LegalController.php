@@ -9,7 +9,7 @@ class LegalController extends AbstractController {
 
     /**
      * /**
-     * @Route("/cga", name="cga")
+     * @Route("/conditions-generales-d-achat", name="cga")
      * @return Response
      */
     public function render_cga() : Response {
