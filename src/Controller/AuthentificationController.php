@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,16 +25,10 @@ class AuthentificationController extends AbstractController {
      */
     private $encoder;
 
-    /**
-     * @var UsersRepository
-     */
-    private $repository;
-
-    public function __construct(EntityManagerInterface $em, UsersRepository $repository, UserPasswordEncoderInterface $encoder)
+    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
         $this->em = $em;
         $this->encoder = $encoder;
-        $this->repository = $repository;
     }
 
     /**
@@ -114,10 +107,9 @@ class AuthentificationController extends AbstractController {
 
     /**
      * @Route("/mon-profil", name="delete", methods="DELETE")
-     * @param Request $request
      * @return Response
      */
-    public function delete(Request $request) {
+    public function delete() {
         $user = $this->getUser();
         $this->container->get('security.token_storage')->setToken(null);
         $this->em->remove($user);
