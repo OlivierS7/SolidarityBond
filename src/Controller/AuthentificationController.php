@@ -108,9 +108,7 @@ class AuthentificationController extends AbstractController {
             ]);
         } else {
             $this->addFlash('error', 'Pour accéder à votre profil, vous devez être connecté !');
-            return $this->render('accueil/accueil.html.twig', [
-                'current_accueil' => 'accueil'
-            ]);
+            return $this->redirectToRoute('login');
         }
     }
 

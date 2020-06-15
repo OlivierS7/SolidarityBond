@@ -17,6 +17,12 @@
                     </div>
                 {% endfor %}
 
+                {% for message in app.flashes('error') %}
+                    <div class="alert alert-danger text-center">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
                 {% if error %}
                     <div class="alert alert-danger text-center">
                         Informations d'identification invalides !
