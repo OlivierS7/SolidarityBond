@@ -19,6 +19,7 @@ return [
         '/se-deconnecter' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\AuthentificationController::logout'], null, null, null, false, false, null]],
         '/conditions-generales-d-achat' => [[['_route' => 'cga', '_controller' => 'App\\Controller\\LegalController::render_cga'], null, null, null, false, false, null]],
         '/conditions-generales-de-vente' => [[['_route' => 'cgv', '_controller' => 'App\\Controller\\LegalController::render_cgv'], null, null, null, false, false, null]],
+        '/conditions-generales-d-utilisation' => [[['_route' => 'cgu', '_controller' => 'App\\Controller\\LegalController::render_cgu'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

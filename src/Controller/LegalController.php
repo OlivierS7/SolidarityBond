@@ -22,4 +22,12 @@ class LegalController extends AbstractController {
     public function render_cgv() : Response {
         return $this->render('mentionsLegales/cgv.html.twig');
     }
+
+    /**
+     * @Route("/conditions-generales-d-utilisation", name="cgu")
+     * @return Response
+     */
+    public function render_cgu() : Response {
+        return $this->render('mentionsLegales/cgu.html.twig');
+    }
 }
