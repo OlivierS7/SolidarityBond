@@ -17,6 +17,10 @@ return [
         '/se-connecter' => [[['_route' => 'login', '_controller' => 'App\\Controller\\AuthentificationController::login'], null, null, null, false, false, null]],
         '/enregistrer' => [[['_route' => 'register', '_controller' => 'App\\Controller\\AuthentificationController::register'], null, null, null, false, false, null]],
         '/se-deconnecter' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\AuthentificationController::logout'], null, null, null, false, false, null]],
+        '/mon-profil' => [
+            [['_route' => 'account', '_controller' => 'App\\Controller\\AuthentificationController::account'], null, ['GET' => 0, 'POST' => 1], null, false, false, null],
+            [['_route' => 'delete', '_controller' => 'App\\Controller\\AuthentificationController::delete'], null, ['DELETE' => 0], null, false, false, null],
+        ],
         '/conditions-generales-d-achat' => [[['_route' => 'cga', '_controller' => 'App\\Controller\\LegalController::render_cga'], null, null, null, false, false, null]],
         '/conditions-generales-de-vente' => [[['_route' => 'cgv', '_controller' => 'App\\Controller\\LegalController::render_cgv'], null, null, null, false, false, null]],
         '/conditions-generales-d-utilisation' => [[['_route' => 'cgu', '_controller' => 'App\\Controller\\LegalController::render_cgu'], null, null, null, false, false, null]],

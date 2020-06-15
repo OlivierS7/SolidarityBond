@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Rollerworks\Component\PasswordStrength\Validator\Constraints as RollerworksPassword;
 
 /**
- * @ORM\Entity(repositoryClass=UsersRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\UsersRepository", repositoryClass=UsersRepository::class)
  * @UniqueEntity("email")
  */
 class Users implements UserInterface,\Serializable
@@ -302,6 +302,11 @@ class Users implements UserInterface,\Serializable
 
     public function eraseCredentials() {}
 
+    /**
+     * String representation of object
+     * @link https://php.net/manual/en/serializable.serialize.php
+     * @return string the string representation of the object or null
+     */
     public function serialize()
     {
         return serialize([
@@ -310,10 +315,20 @@ class Users implements UserInterface,\Serializable
             $this->lastName,
             $this->email,
             $this->password,
+            $this->address,
+            $this->phone,
             $this->status
         ]);
     }
 
+    /**
+     * Constructs the object
+     * @link https://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized <p>
+     * The string representation of the object.
+     * </p>
+     * @return void
+     */
     public function unserialize($serialized)
     {
         list (
@@ -322,7 +337,10 @@ class Users implements UserInterface,\Serializable
             $this->lastName,
             $this->email,
             $this->password,
+            $this->address,
+            $this->phone,
             $this->status
-            ) = unserialize($serialized, ['allowed_classes' => false]);
+            ) = unserialize($serialized, ['allowed_classes' => true]);
     }
+
 }

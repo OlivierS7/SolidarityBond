@@ -10,168 +10,168 @@
 </head>
 
 <body>
-    <!-- NavBar -->
-    <nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<!-- NavBar -->
+<nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="container">
-                <ul class="navbar-nav mr-auto">
-                    <!-- Accueil -->
-                    <div class="col-{% if not app.user %}4{% endif %}{% if app.user %}3{% endif %} d-inline-flex">
-                        <a class="navbar-brand" href="{{ path('accueil') }}">
-                            <svg class="bi bi-house-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="gold">
-                                <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z"/>
-                                <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 011.414 0l6.647 6.646a.5.5 0 01-.708.708L8 2.207 1.354 8.854a.5.5 0 11-.708-.708L7.293 1.5z"/>
-                            </svg>
-                        </a>
-                        <li class="nav-item">
-                            <a class="nav-link {% if current_accueil is defined and current_accueil == 'accueil' %} active {% endif %}" href="{{ path('accueil') }}">Accueil</a>
-                        </li>
-                    </div>
-                    <!-- Boutique -->
-                    <li class="nav-item col-2 text-center">
-                        <a class="nav-link" href="#">Boutique</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="container">
+            <ul class="navbar-nav mr-auto">
+                <!-- Accueil -->
+                <div class="col-3 d-inline-flex justify-content-center" {% if not app.user %} style="margin-right: 50px;" {% endif %}>
+                    <a class="navbar-brand" href="{{ path('accueil') }}">
+                        <svg class="bi bi-house-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="gold">
+                            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z"/>
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 011.414 0l6.647 6.646a.5.5 0 01-.708.708L8 2.207 1.354 8.854a.5.5 0 11-.708-.708L7.293 1.5z"/>
+                        </svg>
+                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link {% if current_accueil is defined and current_accueil == 'accueil' %} active {% endif %}" href="{{ path('accueil') }}">Accueil</a>
                     </li>
-                    <!-- Forum -->
+                </div>
+                <!-- Boutique -->
+                <li class="nav-item col-2 text-center">
+                    <a class="nav-link" href="#">Boutique</a>
+                </li>
+                <!-- Forum -->
+                <li class="nav-item col-2 text-center">
+                    <a class="nav-link" href="#">Forum</a>
+                </li>
+                <!-- Information -->
+                <li class="nav-item col-2 text-center">
+                    <a class="nav-link" href="#">Information</a>
+                </li>
+                <!-- Profil (connecté) -->
+                {% if app.user %}
                     <li class="nav-item col-2 text-center">
-                        <a class="nav-link" href="#">Forum</a>
+                        <a class="nav-link {% if current_profil is defined and current_profil == 'profil' %} active {% endif %}" href="{{ path('account') }}">Profil</a>
                     </li>
-                    <!-- Information -->
-                    <li class="nav-item col-2 text-center">
-                        <a class="nav-link" href="#">Information</a>
-                    </li>
-                    <!-- Profil (connecté) -->
+                {% endif %}
+                <!-- S'identifier -->
+                <li class="nav-item col-{% if not app.user %}3{% endif %}{% if app.user %}2{% endif %} text-center">
                     {% if app.user %}
-                        <li class="nav-item col-2 text-center">
-                            <a class="nav-link" href="#">Profil</a>
-                        </li>
+                        <a class="nav-link text-warning" href="{{ path('logout') }}">Déconnexion</a>
                     {% endif %}
-                    <!-- S'identifier -->
-                    <li class="nav-item col-3 text-center">
-                        {% if app.user %}
-                            <a class="nav-link text-warning" href="{{ path('logout') }}">Se déconnecter</a>
-                        {% endif %}
-                        <a {% if app.user %} hidden {% endif %} class="nav-link text-warning" href="{{ path('login') }}">S'identifier</a>
+                    <a {% if app.user %} hidden {% endif %} class="nav-link text-warning" href="{{ path('login') }}">Connexion</a>
+                </li>
+                <!-- Mon Panier -->
+                <div class="col-3 d-inline-flex justify-content-center" {% if not app.user %} style="margin-right: 50px;" {% endif %}>
+                    <a class="navbar-brand" href="#">
+                        <svg class="bi bi-cart-check" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="gold" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                        </svg>
+                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Panier</a>
                     </li>
-                    <!-- Mon Panier -->
-                    <div class="col-4 d-inline-flex">
-                        <a class="navbar-brand" href="#">
-                            <svg class="bi bi-cart-check" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="gold" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z" clip-rule="evenodd"/>
-                                <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-                            </svg>
-                        </a>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Panier</a>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% block body %}{% endblock %}
+
+<br/><br/>
+
+<!-- Footer -->
+<footer class="font-small mdb-color pt-4 bg-dark text-white">
+    <div class="container text-center text-md-left">
+        <div class="row text-center text-md-left mt-3 pb-3">
+            <!-- Notre Société -->
+            <div class="col-md-4 col-lg-4 col-xl-5 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold text-warning">Notre société</h6>
+                <p class="text-justify">Pour ce projet, nous, ingénieurs, avons mit en place une plateforme web qui a pour but de
+                    mettre en relation l'ensemble des parties prenantes. Elle dispose d'une partie boutique
+                    mais également d'un forum de discussion ouvert à tous. Notre FabLab associé s'occupe de la
+                    production en étant à l'écoute des retours clients.</p>
+            </div>
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!-- Liens Utiles -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold text-warning">Liens Utiles</h6>
+                <p>
+                    <a href="{{ path('account') }}">Profil</a>
+                </p>
+                <p>
+                    <a href="{{ path('cga') }}">CGA</a>
+                </p>
+                <p>
+                    <a href="{{ path('cgv') }}">CGV</a>
+                </p>
+                <p>
+                    <a href="{{ path('cgu') }}">CGU & Cookies</a>
+                </p>
+            </div>
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!-- Contact -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold text-warning">Contact</h6>
+                <p>CESI Ecole d'ingénieurs</p>
+                <p>Saint-Nazaire, 44600</p>
+                <p>projetweb@viacesi.fr</p>
+                <p>02 40 00 17 00</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row d-flex align-items-center">
+            <div class="col-md-7 col-lg-7">
+                <!-- Copyright -->
+                <p class="text-center">© 2020 Copyright :
+                    <a href="https://saint-nazaire.cesi.fr/ecoles-formations/">
+                        <strong>CESI Saint-Nazaire</strong>
+                    </a>
+                </p>
+            </div>
+            <div class="col-md-5 col-lg-4 ml-lg-0">
+                <!-- Réseaux Sociaux -->
+                <div class="text-center text-md-left">
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item">
+                            <a href="https://fr-fr.facebook.com/campus.cesi.stnazaire/" class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-square"
+                                     class="svg-inline--fa fa-facebook-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path fill="#3b5998" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg>
+                            </a>
                         </li>
-                    </div>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    {% block body %}{% endblock %}
-
-    <br/><br/>
-
-    <!-- Footer -->
-    <footer class="font-small mdb-color pt-4 bg-dark text-white">
-        <div class="container text-center text-md-left">
-            <div class="row text-center text-md-left mt-3 pb-3">
-                <!-- Notre Société -->
-                <div class="col-md-4 col-lg-4 col-xl-5 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold text-warning">Notre société</h6>
-                    <p class="text-justify">Pour ce projet, nous, ingénieurs, avons mit en place une plateforme web qui a pour but de
-                        mettre en relation l'ensemble des parties prenantes. Elle dispose d'une partie boutique
-                        mais également d'un forum de discussion ouvert à tous. Notre FabLab associé s'occupe de la
-                        production en étant à l'écoute des retours clients.</p>
-                </div>
-
-                <hr class="w-100 clearfix d-md-none">
-
-                <!-- Liens Utiles -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold text-warning">Liens Utiles</h6>
-                    <p>
-                        <a href="#!">Profil</a>
-                    </p>
-                    <p>
-                        <a href="{{ path('cga') }}">CGA</a>
-                    </p>
-                    <p>
-                        <a href="{{ path('cgv') }}">CGV</a>
-                    </p>
-                    <p>
-                        <a href="{{ path('cgu') }}">CGU & Cookies</a>
-                    </p>
-                </div>
-
-                <hr class="w-100 clearfix d-md-none">
-
-                <!-- Contact -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold text-warning">Contact</h6>
-                    <p>CESI Ecole d'ingénieurs</p>
-                    <p>Saint-Nazaire, 44600</p>
-                    <p>admin@viacesi.fr</p>
-                    <p>02 40 00 17 00</p>
-                </div>
-            </div>
-            <hr>
-            <div class="row d-flex align-items-center">
-                <div class="col-md-7 col-lg-7">
-                    <!-- Copyright -->
-                    <p class="text-center">© 2020 Copyright :
-                        <a href="https://saint-nazaire.cesi.fr/ecoles-formations/">
-                            <strong>CESI Saint-Nazaire</strong>
-                        </a>
-                    </p>
-                </div>
-                <div class="col-md-5 col-lg-4 ml-lg-0">
-                    <!-- Réseaux Sociaux -->
-                    <div class="text-center text-md-left">
-                        <ul class="list-unstyled list-inline">
-                            <li class="list-inline-item">
-                                <a href="https://fr-fr.facebook.com/campus.cesi.stnazaire/" class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-square"
-                                         class="svg-inline--fa fa-facebook-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                        <path fill="#3b5998" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://twitter.com/CesiOuest?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
-                                         class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                        <path fill="#00acee" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://www.youtube.com/user/groupecesi1" class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube-square"
-                                         class="svg-inline--fa fa-youtube-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                        <path fill="#c4302b" d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"></path></svg>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://fr.linkedin.com/in/cesi-saint-nazaire-0a59a535" class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin"
-                                         class="svg-inline--fa fa-linkedin fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                        <path fill="#0e76a8" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                        <li class="list-inline-item">
+                            <a href="https://twitter.com/CesiOuest?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square"
+                                     class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path fill="#00acee" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.youtube.com/user/groupecesi1" class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube-square"
+                                     class="svg-inline--fa fa-youtube-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path fill="#c4302b" d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"></path></svg>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://fr.linkedin.com/in/cesi-saint-nazaire-0a59a535" class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin"
+                                     class="svg-inline--fa fa-linkedin fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path fill="#0e76a8" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    {% block javascripts %}{% endblock %}
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{% block javascripts %}{% endblock %}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 
 </html>

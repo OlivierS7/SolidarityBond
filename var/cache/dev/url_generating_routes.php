@@ -19,6 +19,8 @@ return [
     'login' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::login'], [], [['text', '/se-connecter']], [], []],
     'register' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::register'], [], [['text', '/enregistrer']], [], []],
     'logout' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::logout'], [], [['text', '/se-deconnecter']], [], []],
+    'account' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::account'], [], [['text', '/mon-profil']], [], []],
+    'delete' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::delete'], [], [['text', '/mon-profil']], [], []],
     'cga' => [[], ['_controller' => 'App\\Controller\\LegalController::render_cga'], [], [['text', '/conditions-generales-d-achat']], [], []],
     'cgv' => [[], ['_controller' => 'App\\Controller\\LegalController::render_cgv'], [], [['text', '/conditions-generales-de-vente']], [], []],
     'cgu' => [[], ['_controller' => 'App\\Controller\\LegalController::render_cgu'], [], [['text', '/conditions-generales-d-utilisation']], [], []],
