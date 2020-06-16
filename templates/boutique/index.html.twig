@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Boutique' %}
+
+{% block css %}
+    <link rel="stylesheet" href="css/accueil.css">
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h2 class="text-center">« S’organiser et permettre aux entreprises de relancer leurs activités grâce à nos visières » </h2>
+            </div>
+        </div>
+        <br />
+        <div class="row justify-content-center">
+            <div class="col-md-6 d-inline-flex">
+                <img class="img-fluid" src="images/boutique/bandeauBoutique.png" alt="BandeauBoutique">
+            </div>
+            <div class="col-xl-4 top-text" style="padding-top: 100px">
+                <h4>Boutique en ligne</h4>
+                <br />
+                <p class="text-justify">Ici vous pouvez retrouver la boutique en ligne. Vous y trouverez des masques, des visières ainsi
+                que des gels hydroalcoolique.</p>
+                <center><a href="{{ path('boutique.new') }}" class="btn btn-warning">Ajouter un produit</a></center>
+            </div>
+        </div>
+    </div>
+
+    <br />
+{% endblock %}
