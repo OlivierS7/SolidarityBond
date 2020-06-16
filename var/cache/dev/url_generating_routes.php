@@ -21,6 +21,8 @@ return [
     'logout' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::logout'], [], [['text', '/se-deconnecter']], [], []],
     'account' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::account'], [], [['text', '/mon-profil']], [], []],
     'delete' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::delete'], [], [['text', '/mon-profil']], [], []],
+    'forum.index' => [[], ['_controller' => 'App\\Controller\\ForumController::index'], [], [['text', '/forum']], [], []],
+    'forum.new' => [[], ['_controller' => 'App\\Controller\\ForumController::new'], [], [['text', '/forum/create']], [], []],
     'cga' => [[], ['_controller' => 'App\\Controller\\LegalController::render_cga'], [], [['text', '/conditions-generales-d-achat']], [], []],
     'cgv' => [[], ['_controller' => 'App\\Controller\\LegalController::render_cgv'], [], [['text', '/conditions-generales-de-vente']], [], []],
     'cgu' => [[], ['_controller' => 'App\\Controller\\LegalController::render_cgu'], [], [['text', '/conditions-generales-d-utilisation']], [], []],

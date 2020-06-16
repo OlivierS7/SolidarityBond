@@ -18,6 +18,4 @@ class AccueilController extends AbstractController {
         ]);
     }
 
-
-
 }

@@ -1,0 +1,63 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Forum' %}
+
+{% block css %}
+    <link rel="stylesheet" href="css/accueil.css">
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h2 class="text-center">« S’organiser et permettre aux entreprises de relancer leurs activités grâce à nos visières » </h2>
+            </div>
+        </div>
+        <br />
+        <div class="row justify-content-center">
+            <div class="col-md-6 d-inline-flex">
+                <img class="bandeau" src="images/forum/bandeauForum.jpg" alt="BandeauForum">
+            </div>
+            <div class="col-xl-4 top-text">
+                <h4>Forum de discussion</h4>
+                <br />
+                <p class="text-justify">Ce forum est à disposition des utilisateurs connectés afin de poser des questions ou de répondre
+                    à d’autres afin de promouvoir la communication et l’échange. Il sera modéré par des volontaires
+                    du personnel hospitalier, soit des personnes avec de l’expérience dans le domaine qui seront heureux de vous aider. </p>
+                <a href="{{ path('forum.new') }}" class="btn btn-warning">Ajouter un sujet de discussion</a>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 text-center">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success text-center">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                <h4>Les sujets disponibles</h4>
+                <hr><br />
+            </div>
+        </div>
+        <br/>
+        <div class="row flex">
+            {% for subject in subjects %}
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                 <a href="#">{{ subject.type.name }}: {{ subject.name }}</a>
+                            </h5>
+                            <p class="card-text">{{ subject.description }}
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

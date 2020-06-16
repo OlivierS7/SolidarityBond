@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -26,7 +27,7 @@ class AuthentificationType extends AbstractType
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmer le mot de passe'],
             ])
-            ->add('address', null, ['label' => 'Adresse (optionnel)'])
+            ->add('address', TextareaType::class, ['label' => 'Adresse (optionnel)'])
             ->add('phone', null, ['label' => 'Téléphone (optionnel)'])
             ->add('status', null, [
                 'label' => 'Statut',

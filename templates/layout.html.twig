@@ -37,7 +37,7 @@
                 </li>
                 <!-- Forum -->
                 <li class="nav-item col-2 text-center">
-                    <a class="nav-link" href="#">Forum</a>
+                    <a class="nav-link {% if current_forum is defined and current_forum == 'forum' %} active {% endif %}" href="{{ path('forum.index') }}">Forum</a>
                 </li>
                 <!-- Information -->
                 <li class="nav-item col-2 text-center">

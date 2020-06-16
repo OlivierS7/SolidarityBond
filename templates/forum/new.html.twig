@@ -1,0 +1,17 @@
+{% extends  'layout.html.twig' %}
+
+{% block title 'Créer un sujet' %}
+
+{% block body %}
+    <div class="container" style="margin-top: 40px;">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <br/>
+                <h1 class="text-center">Ajouter un sujet</h1>
+                <hr>
+            </div>
+        </div>
+        {{ include('forum/form.html.twig', {button: 'Ajouter'}) }}
+    </div>
+{% endblock %}
+
