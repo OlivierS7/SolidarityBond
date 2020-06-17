@@ -39,8 +39,7 @@ class Products
     private $category;
 
     /**
-     * @ORM\OneToOne(targetEntity=Images::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string",  length=255)
      */
     private $image;
 
@@ -102,12 +101,12 @@ class Products
         return $this;
     }
 
-    public function getImage(): ?Images
+    public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage(Images $image): self
+    public function setImage(string $image): self
     {
         $this->image = $image;
 

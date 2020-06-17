@@ -27,7 +27,7 @@ class AuthentificationType extends AbstractType
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmer le mot de passe'],
             ])
-            ->add('address', TextareaType::class, ['label' => 'Adresse (optionnel)'])
+            ->add('address', null, ['label' => 'Adresse (optionnel)'])
             ->add('phone', null, ['label' => 'Téléphone (optionnel)'])
             ->add('status', null, [
                 'label' => 'Statut',

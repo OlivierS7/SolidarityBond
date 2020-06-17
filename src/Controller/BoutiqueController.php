@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\AsciiSlugger;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class BoutiqueController extends AbstractController {
     /**
@@ -37,9 +39,23 @@ class BoutiqueController extends AbstractController {
         $user = $this->getUser();
         if ($user) {
             $product = new Products();
+            $slugger = new AsciiSlugger();
             $form = $this->createForm(ProductType::class, $product);
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
+                $uploadedFile = $form['image']->getData();
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                try {
+                    $uploadedFile->move(
+                        '../public/images/boutique',
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                }
+                $product->setImage($newFilename);
+                $product->setStatus(true);
                 $this->em->persist($product);
                 $this->em->flush();
                 $this->addFlash('success', 'Produit créé avec succès !');
@@ -49,7 +65,7 @@ class BoutiqueController extends AbstractController {
                 'form' => $form->createView()
             ]);
         } else {
-            $this->addFlash('error', 'Pour ajouter un produit, vous devez être connecté !');
+            $this->addFlash('error', 'Pour ajouter un sujet de discussion, vous devez être connecté !');
             return $this->redirectToRoute('login');
         }
 
