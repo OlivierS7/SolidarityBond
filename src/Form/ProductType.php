@@ -20,7 +20,7 @@ class ProductType extends AbstractType
             ->add('status', HiddenType::class, ['label' => 'Disponible'])
             ->add('description', null, ['label' => 'Description'])
             ->add('category',null, [
-                'label' => 'Categorie',
+                'label' => 'Catégorie',
                 'choice_label' => 'name'
             ])
             ->add('image', FileType::class, array(

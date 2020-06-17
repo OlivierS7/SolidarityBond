@@ -40,7 +40,6 @@ class SubjectType extends AbstractType
                     return $er->createQueryBuilder('u')
                         ->where('u.id = :identifier')
                         ->setParameter('identifier', $this->user->getId());
-
                 },
             ])
         ;

@@ -59,7 +59,8 @@
                             <h5 class="card-title">
                                  <a href="{{ path('forum.show', {id: subject.id, slug: subject.slug }) }}">{{ subject.type.name }}: {{ subject.name }}</a>
                             </h5>
-                            <p class="card-text">{{ subject.description }} <br>
+                            <p class="card-text">{{ subject.description|length > 255 ? subject.description|slice(0, 255) ~ ' …' : subject.description }}
+                                <br>
                             <p class="card-text text-right">{{ subject.user.firstName }} {{ subject.user.lastName }}: Le {{ subject.createdAt }}</p>
                         </div>
                     </div>

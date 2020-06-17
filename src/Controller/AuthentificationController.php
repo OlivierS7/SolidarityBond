@@ -25,8 +25,7 @@ class AuthentificationController extends AbstractController {
      */
     private $encoder;
 
-    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
-    {
+    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $encoder) {
         $this->em = $em;
         $this->encoder = $encoder;
     }

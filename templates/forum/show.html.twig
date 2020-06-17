@@ -1,6 +1,24 @@
-{% extends  'layout.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title 'Forum de discussion' %}
+{% block title 'Forum' %}
+
+{% block css %}
+    <link rel="stylesheet" href="css/accueil.css">
+{% endblock %}
 
 {% block body %}
+    <div class="jumbotron" style="margin-top: 40px;">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning">{{ subject.type.name }}: {{ subject.name }}</h5>
+                        <p class="card-text">{{ subject.description }}
+                            <br>
+                        <p class="card-text text-right">{{ subject.user.firstName }} {{ subject.user.lastName }}: Le {{ subject.createdAt }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

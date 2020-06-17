@@ -33,7 +33,7 @@
                 </div>
                 <!-- Boutique -->
                 <li class="nav-item col-2 text-center">
-                    <a class="nav-link" href="boutique">Boutique</a>
+                    <a class="nav-link {% if current_boutique is defined and current_boutique == 'boutique' %} active {% endif %}" href="{{ path('boutique.index') }}">Boutique</a>
                 </li>
                 <!-- Forum -->
                 <li class="nav-item col-2 text-center">

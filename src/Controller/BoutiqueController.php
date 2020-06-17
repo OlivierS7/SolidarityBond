@@ -13,22 +13,26 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
-class BoutiqueController extends AbstractController {
+class BoutiqueController extends AbstractController
+{
+
     /**
      * @var EntityManagerInterface
      */
     private $em;
 
-    public function __construct(EntityManagerInterface $em)
-    {
+    public function __construct(EntityManagerInterface $em) {
         $this->em = $em;
     }
+
     /**
      * @Route("/boutique", name="boutique.index")
      * @return Response
      */
     public function index() : Response {
-        return $this->render('boutique/index.html.twig');
+        return $this->render('boutique/index.html.twig', [
+            'current_boutique' => 'boutique'
+        ]);
     }
 
     /**
@@ -71,7 +75,6 @@ class BoutiqueController extends AbstractController {
             $this->addFlash('error', 'Pour ajouter un sujet de discussion, vous devez être connecté !');
             return $this->redirectToRoute('login');
         }
-
     }
 
 }

@@ -30,4 +30,5 @@ class LegalController extends AbstractController {
     public function render_cgu() : Response {
         return $this->render('mentionsLegales/cgu.html.twig');
     }
+
 }
