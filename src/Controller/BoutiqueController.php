@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Products;
 use App\Form\ProductType;
 use Doctrine\ORM\EntityManagerInterface;
+use Intervention\Image\ImageManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,6 +55,8 @@ class BoutiqueController extends AbstractController {
                     );
                 } catch (FileException $e) {
                 }
+                $manager = new ImageManager();
+                $manager->make('../public/images/boutique/produit/'.$newFilename)->fit(650,980)->save('../public/images/boutique/produit/'.$newFilename);
                 $product->setImage($newFilename);
                 $product->setStatus(true);
                 $this->em->persist($product);
