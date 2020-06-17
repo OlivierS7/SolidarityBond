@@ -75,4 +75,23 @@ class ForumController extends AbstractController
         }
     }
 
+    /**
+     * @Route("/forum/{slug}-{id}", name="forum.show", requirements={"slug": "[a-z0-9\-]*"})
+     * @param Subjects $subject
+     * @param string $slug
+     * @return Response
+     */
+    public function show(Subjects $subject, string $slug): Response
+    {
+        if ($subject->getSlug() !== $slug) {
+            return $this->redirectToRoute('forum.show', [
+                'id' => $subject->getId(),
+                'slug' => $subject->getSlug()
+            ], 301);
+        };
+        return $this->render('forum/show.html.twig', [
+            'current_forum' => 'forum',
+            'subject' => $subject
+        ]);
+    }
 }

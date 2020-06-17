@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\SubjectsRepository;
+use Cocur\Slugify\Slugify;
 use DateTime;
+use DateTimeZone;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -61,6 +63,7 @@ class Subjects
 
     public function __construct()
     {
+        $this->createdAt = (new \DateTime())->setTimezone(new DateTimeZone('Europe/Paris'));
         $this->comments = new ArrayCollection();
     }
 
@@ -79,6 +82,10 @@ class Subjects
         $this->name = $name;
 
         return $this;
+    }
+
+    public function getSlug() {
+        return (new Slugify())->slugify($this->name);
     }
 
     public function getDescription(): ?string
@@ -148,15 +155,14 @@ class Subjects
         return $this;
     }
 
-    public function getCreatedAt() :?DateTime
+    public function getCreatedAt() :?string
     {
-        return $this->createdAt;
+        return $this->createdAt->format('d-m-Y à H:i');
     }
 
     public function setCreatedAt(DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 }
