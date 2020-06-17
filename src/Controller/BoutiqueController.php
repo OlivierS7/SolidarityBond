@@ -49,7 +49,7 @@ class BoutiqueController extends AbstractController {
                 'form' => $form->createView()
             ]);
         } else {
-            $this->addFlash('error', 'Pour ajouter un sujet de discussion, vous devez être connecté !');
+            $this->addFlash('error', 'Pour ajouter un produit, vous devez être connecté !');
             return $this->redirectToRoute('login');
         }
 
