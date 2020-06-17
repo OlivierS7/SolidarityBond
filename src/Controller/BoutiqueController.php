@@ -49,7 +49,7 @@ class BoutiqueController extends AbstractController {
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$uploadedFile->guessExtension();
                 try {
                     $uploadedFile->move(
-                        '../public/images/boutique',
+                        '../public/images/boutique/produit',
                         $newFilename
                     );
                 } catch (FileException $e) {
