@@ -23,10 +23,51 @@
                 <br />
                 <p class="text-justify">Ici vous pouvez retrouver la boutique en ligne. Vous y trouverez des masques, des visières ainsi
                 que des gels hydroalcoolique.</p>
-                <center><a href="{{ path('boutique.new') }}" class="btn btn-warning">Ajouter un produit</a></center>
+                <a href="{{ path('boutique.new') }}" class="btn btn-warning">Ajouter un produit</a>
             </div>
         </div>
     </div>
 
+    {% for message in app.flashes('success') %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-6 text-center">
+                    <div class="alert alert-success text-center">
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
     <br />
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 text-center">
+                <h4>Les articles disponibles</h4>
+                <hr><br />
+            </div>
+        </div>
+        <br/>
+        <div class="row flex">
+            {% for article in articles %}
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{ article.name }} : {{ article.price }} €
+                            </h5>
+                            <div class="card-text text-center">
+                                <p>{{ article.description }} <br></p>
+                                <img src="/images/boutique/produit/{{ article.image }}" alt="Image du produit"><br/><br/>
+                                <a href="{{ path('boutique.show', {id: article.id, slug: article.slug }) }}" class="btn btn-primary stretched-link">Aller voir l'article</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

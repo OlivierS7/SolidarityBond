@@ -25,7 +25,8 @@ class ForumController extends AbstractController
      */
     private $em;
 
-    public function __construct(SubjectsRepository $repository, EntityManagerInterface $em) {
+    public function __construct(SubjectsRepository $repository, EntityManagerInterface $em)
+    {
         $this->repository = $repository;
         $this->em = $em;
     }
@@ -34,7 +35,8 @@ class ForumController extends AbstractController
      * @Route("/forum", name="forum.index")
      * @return Response
      */
-    public function index(): Response {
+    public function index(): Response
+    {
         $subjects = $this->repository->findAll();
         return $this->render('forum/index.html.twig', [
             'current_forum' => 'forum',
@@ -47,8 +49,10 @@ class ForumController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function new(Request $request) {
-        $user = $this->getUser();
+    public function new(Request $request)
+    {
+        $user = new Users();
+        $user = $user->getFirstName() . ' ' . $user->getLastName();
         if ($user) {
             $subject = new Subjects();
             $form = $this->createForm(SubjectType::class, $subject);
@@ -75,7 +79,8 @@ class ForumController extends AbstractController
      * @param string $slug
      * @return Response
      */
-    public function show(Subjects $subject, string $slug): Response {
+    public function show(Subjects $subject, string $slug): Response
+    {
         if ($subject->getSlug() !== $slug) {
             return $this->redirectToRoute('forum.show', [
                 'id' => $subject->getId(),
@@ -87,5 +92,4 @@ class ForumController extends AbstractController
             'subject' => $subject
         ]);
     }
-
 }

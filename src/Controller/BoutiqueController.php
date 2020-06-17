@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Products;
 use App\Form\ProductType;
+use App\Repository\ProductsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Intervention\Image\ImageManager;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,25 +14,31 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
-class BoutiqueController extends AbstractController
-{
-
+class BoutiqueController extends AbstractController {
     /**
      * @var EntityManagerInterface
      */
     private $em;
 
-    public function __construct(EntityManagerInterface $em) {
+    /**
+     * @var ProductsRepository
+     */
+    private $repository;
+
+    public function __construct(ProductsRepository $repository, EntityManagerInterface $em)
+    {
+        $this->repository = $repository;
         $this->em = $em;
     }
-
     /**
      * @Route("/boutique", name="boutique.index")
      * @return Response
      */
     public function index() : Response {
+        $articles = $this->repository->findAll();
         return $this->render('boutique/index.html.twig', [
-            'current_boutique' => 'boutique'
+            'current_boutique' => 'boutique',
+            'articles' => $articles
         ]);
     }
 
@@ -60,7 +67,7 @@ class BoutiqueController extends AbstractController
                 } catch (FileException $e) {
                 }
                 $manager = new ImageManager();
-                $manager->make('../public/images/boutique/produit/'.$newFilename)->fit(650,980)->save('../public/images/boutique/produit/'.$newFilename);
+                $manager->make('../public/images/boutique/produit/'.$newFilename)->fit(400,400)->save('../public/images/boutique/produit/'.$newFilename);
                 $product->setImage($newFilename);
                 $product->setStatus(true);
                 $this->em->persist($product);
@@ -75,6 +82,26 @@ class BoutiqueController extends AbstractController
             $this->addFlash('error', 'Pour ajouter un sujet de discussion, vous devez être connecté !');
             return $this->redirectToRoute('login');
         }
+    }
+
+    /**
+     * @Route("/boutique/{slug}-{id}", name="boutique.show", requirements={"slug": "[a-z0-9\-]*"})
+     * @param Products $product
+     * @param string $slug
+     * @return Response
+     */
+    public function show(Products $product, string $slug): Response
+    {
+        if ($product->getSlug() !== $slug) {
+            return $this->redirectToRoute('/boutique/{slug}-{id}', [
+                'id' => $product->getId(),
+                'slug' => $product->getSlug()
+            ], 301);
+        };
+        return $this->render('boutique/show.html.twig', [
+            'current_boutique' => 'boutique',
+            'article' => $product
+        ]);
     }
 
 }

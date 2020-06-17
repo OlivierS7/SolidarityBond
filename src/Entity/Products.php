@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProductsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Slugify;
 
 /**
  * @ORM\Entity(repositoryClass=ProductsRepository::class)
@@ -123,5 +124,9 @@ class Products
         $this->description = $description;
 
         return $this;
+    }
+
+    public function getSlug() {
+        return (new Slugify())->slugify($this->name);
     }
 }

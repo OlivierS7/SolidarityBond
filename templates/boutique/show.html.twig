@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Article' %}
+
+{% block css %}
+    <link rel="stylesheet" href="css/accueil.css">
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron" style="margin-top: 40px;">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ article.name }} : {{ article.price }} €
+                    </h5>
+                    <div class="card-text text-center">
+                        <p>{{ article.description }} <br></p>
+                        <img src="/images/boutique/produit/{{ article.image }}" alt="Image du produit"><br/><br/>
+                        <a href="{{ path('boutique.show', {id: article.id, slug: article.slug }) }}" class="btn btn-primary stretched-link">Ajouter l'article au panier</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
