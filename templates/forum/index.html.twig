@@ -29,16 +29,23 @@
         </div>
     </div>
 
+    {% for message in app.flashes('success') %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-6 text-center">
+                    <div class="alert alert-success text-center">
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
     <br />
 
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6 text-center">
-                {% for message in app.flashes('success') %}
-                    <div class="alert alert-success text-center">
-                        {{ message }}
-                    </div>
-                {% endfor %}
                 <h4>Les sujets disponibles</h4>
                 <hr><br />
             </div>
@@ -52,7 +59,8 @@
                             <h5 class="card-title">
                                  <a href="#">{{ subject.type.name }}: {{ subject.name }}</a>
                             </h5>
-                            <p class="card-text">{{ subject.description }}
+                            <p class="card-text">{{ subject.description }} <br>
+                            <p class="card-text text-right">{{ subject.user.firstName }} {{ subject.user.lastName }}</p>
                         </div>
                     </div>
                     <br />

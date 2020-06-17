@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Subjects;
+use App\Entity\Users;
 use App\Form\SubjectType;
 use App\Repository\SubjectsRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -50,7 +51,10 @@ class ForumController extends AbstractController
      */
     public function new(Request $request)
     {
-        $user = $this->getUser();
+        $user = new Users();
+        $user = $user->getFirstName() . ' ' . $user->getLastName();
+
+
         if ($user) {
             $subject = new Subjects();
             $form = $this->createForm(SubjectType::class, $subject);
