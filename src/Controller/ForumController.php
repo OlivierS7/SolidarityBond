@@ -46,7 +46,7 @@ class ForumController extends AbstractController
      */
     public function index(): Response
     {
-        $subjects = $this->subjectsRepository->findAll();
+        $subjects = $this->subjectsRepository->findSujects();
         return $this->render('forum/index.html.twig', [
             'current_forum' => 'forum',
             'subjects' => $subjects

@@ -16,6 +16,6 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerCnxPTNT\App_KernelDevDebugContainer([
     'container.build_hash' => 'CnxPTNT',
-    'container.build_id' => '250c301d',
-    'container.build_time' => 1592498189,
+    'container.build_id' => 'b2b5621f',
+    'container.build_time' => 1592498523,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerCnxPTNT');

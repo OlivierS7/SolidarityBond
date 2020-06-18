@@ -19,6 +19,14 @@ class SubjectsRepository extends ServiceEntityRepository
         parent::__construct($registry, Subjects::class);
     }
 
+    public function findSujects(): ?array
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Subjects[] Returns an array of Subjects objects
     //  */
