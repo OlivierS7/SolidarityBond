@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Comments;
 use App\Entity\Subjects;
 use App\Entity\Users;
+use App\Form\CommentType;
 use App\Form\SubjectType;
+use App\Repository\CommentsRepository;
 use App\Repository\SubjectsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,16 +21,22 @@ class ForumController extends AbstractController
     /**
      * @var SubjectsRepository
      */
-    private $repository;
+    private $subjectsRepository;
+
+    /**
+     * @var CommentsRepository
+     */
+    private $commentsRepository;
 
     /**
      * @var EntityManagerInterface
      */
     private $em;
 
-    public function __construct(SubjectsRepository $repository, EntityManagerInterface $em)
+    public function __construct(SubjectsRepository $subjectsRepository, CommentsRepository $commentsRepository, EntityManagerInterface $em)
     {
-        $this->repository = $repository;
+        $this->subjectsRepository = $subjectsRepository;
+        $this->commentsRepository = $commentsRepository;
         $this->em = $em;
     }
 
@@ -37,7 +46,7 @@ class ForumController extends AbstractController
      */
     public function index(): Response
     {
-        $subjects = $this->repository->findAll();
+        $subjects = $this->subjectsRepository->findAll();
         return $this->render('forum/index.html.twig', [
             'current_forum' => 'forum',
             'subjects' => $subjects
@@ -51,8 +60,7 @@ class ForumController extends AbstractController
      */
     public function new(Request $request)
     {
-        $user = new Users();
-        $user = $user->getFirstName() . ' ' . $user->getLastName();
+        $user = $this->getUser();
         if ($user) {
             $subject = new Subjects();
             $form = $this->createForm(SubjectType::class, $subject);
@@ -76,20 +84,43 @@ class ForumController extends AbstractController
     /**
      * @Route("/forum/{slug}-{id}", name="forum.show", requirements={"slug": "[a-z0-9\-]*"})
      * @param Subjects $subject
+     * @param Request $request
      * @param string $slug
      * @return Response
      */
-    public function show(Subjects $subject, string $slug): Response
+    public function show(Subjects $subject, Request $request, string $slug): Response
     {
         if ($subject->getSlug() !== $slug) {
             return $this->redirectToRoute('forum.show', [
                 'id' => $subject->getId(),
                 'slug' => $subject->getSlug()
             ], 301);
-        };
-        return $this->render('forum/show.html.twig', [
-            'current_forum' => 'forum',
-            'subject' => $subject
-        ]);
+        }
+
+        $user = $this->getUser();
+        if ($user) {
+            $comments = $this->commentsRepository->findComments($subject->getId());
+            $comment = new Comments();
+            $form = $this->createForm(CommentType::class, $comment);
+            $comment->setSubject($subject);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->em->persist($comment);
+                $this->em->flush();
+                return $this->redirectToRoute('forum.show', [
+                    'id' => $subject->getId(),
+                    'slug' => $subject->getSlug()
+                ], 301);
+            }
+            return $this->render('forum/show.html.twig', [
+                'current_forum' => 'forum',
+                'subject' => $subject,
+                'comments' => $comments,
+                'form' => $form->createView()
+            ]);
+        } else {
+            $this->addFlash('error', 'Pour ajouter un commentaire, vous devez être connecté !');
+            return $this->redirectToRoute('login');
+        }
     }
 }

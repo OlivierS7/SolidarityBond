@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CommentsRepository;
 use DateTime;
+use DateTimeZone;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -44,7 +45,7 @@ class Comments
 
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
+        $this->createdAt = (new \DateTime())->setTimezone(new DateTimeZone('Europe/Paris'));
     }
 
     public function getId(): ?int
@@ -88,15 +89,14 @@ class Comments
         return $this;
     }
 
-    public function getCreatedAt() :?DateTime
+    public function getCreatedAt() :?string
     {
-        return $this->createdAt;
+        return $this->createdAt->format('d-m-Y à H:i');
     }
 
     public function setCreatedAt(DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 }

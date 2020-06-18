@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Comments;
+use App\Entity\Subjects;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +18,16 @@ class CommentsRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Comments::class);
+    }
+
+    public function findComments($subject): ?array
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.subject = :id')
+            ->setParameter('id', $subject)
+            ->orderBy('c.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
     }
 
     // /**
