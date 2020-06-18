@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Comments;
 use App\Entity\Subjects;
-use App\Entity\Users;
 use App\Form\CommentType;
 use App\Form\SubjectType;
 use App\Repository\CommentsRepository;
@@ -96,7 +95,6 @@ class ForumController extends AbstractController
                 'slug' => $subject->getSlug()
             ], 301);
         }
-
         $user = $this->getUser();
         if ($user) {
             $comments = $this->commentsRepository->findComments($subject->getId());
@@ -122,5 +120,22 @@ class ForumController extends AbstractController
             $this->addFlash('error', 'Pour ajouter un commentaire, vous devez être connecté !');
             return $this->redirectToRoute('login');
         }
+    }
+
+    /**
+     * @Route("/forum/{id}", name="forum.deleteComment", methods="DELETE")
+     * @param Request $request
+     * @param Subjects $subject
+     * @param int $id
+     * @return Response
+     */
+    public function deleteComment(Request $request, Subjects $subject, int $id)
+    {
+        if ($this->isCsrfTokenValid('delete', $request->get('_token'))) {
+            $comment = $this->commentsRepository->find($id);
+            $this->em->remove($comment);
+            $this->em->flush();
+        }
+        return $this->redirectToRoute('forum.index');
     }
 }

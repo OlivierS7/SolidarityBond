@@ -1,0 +1,18 @@
+.top-card
+{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.title
+{
+    padding-top: 10px;
+}
+
+.delCom
+{
+    width: 35px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+}
