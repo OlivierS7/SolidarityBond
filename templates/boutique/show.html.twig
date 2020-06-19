@@ -13,9 +13,13 @@
                     <div class="card-text text-center">
                         <p>{{ article.description }} <br></p>
                         <img src="/images/boutique/produit/{{ article.image }}" alt="Image du produit"><br/><br/>
-                        <a href="{{ path('cart_add', {id: article.id }) }}" class="btn btn-primary stretched-link">Ajouter l'article au panier</a>
+                        <div class="row justify-content-center">
+                            <form class="col-md-2" action="{{ path('cart_add', {id: article.id }) }}" method="post">
+                                <input type="number" id="quantity" name="quantity" min="1" max="500" value="1" step="1" class="text-center form-control" >
+                                <input type="submit" class="btn btn-primary stretched-link" value="Ajouter l'article au panier"></a>
+                            </form>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
