@@ -396,9 +396,6 @@
     <service id="App\Form\ProductType" class="App\Form\ProductType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
-    <service id="App\Form\QuantityType" class="App\Form\QuantityType" autowire="true" autoconfigure="true">
-      <tag name="form.type"/>
-    </service>
     <service id="App\Form\SubjectType" class="App\Form\SubjectType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
       <argument type="service" id="security.token_storage"/>
@@ -884,7 +881,6 @@
         <argument>App\Form\AuthentificationType</argument>
         <argument>App\Form\CommentType</argument>
         <argument>App\Form\ProductType</argument>
-        <argument>App\Form\QuantityType</argument>
         <argument>App\Form\SubjectType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -1227,7 +1223,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.PhiHMHl"/>
+      <argument type="service" id=".service_locator.09UEte4"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -5106,8 +5102,6 @@
     <service id=".abstract.instanceof.App\Form\CommentType" class="App\Form\CommentType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ProductType" class="App\Form\ProductType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ProductType" class="App\Form\ProductType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\QuantityType" class="App\Form\QuantityType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\QuantityType" class="App\Form\QuantityType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SubjectType" class="App\Form\SubjectType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\SubjectType" class="App\Form\SubjectType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategoriesRepository" class="App\Repository\CategoriesRepository" autowire="true" abstract="true"/>
@@ -5489,13 +5483,12 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.PhiHMHl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.09UEte4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\AuthentificationType" type="service" id="App\Form\AuthentificationType"/>
         <argument key="App\Form\CommentType" type="service" id="App\Form\CommentType"/>
         <argument key="App\Form\ProductType" type="service" id="App\Form\ProductType"/>
-        <argument key="App\Form\QuantityType" type="service" id="App\Form\QuantityType"/>
         <argument key="App\Form\SubjectType" type="service" id="App\Form\SubjectType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>

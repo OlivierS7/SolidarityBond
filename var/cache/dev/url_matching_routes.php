@@ -47,16 +47,19 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/boutique/([a-z0-9\\-]*)\\-([^/]++)(*:202)'
+                .'|/boutique/(?'
+                    .'|deleteProduct/([^/]++)(*:204)'
+                    .'|([a-z0-9\\-]*)\\-([^/]++)(*:235)'
+                .')'
                 .'|/panier/(?'
-                    .'|add/([^/]++)(*:233)'
-                    .'|remove/([^/]++)(*:256)'
+                    .'|add/([^/]++)(*:267)'
+                    .'|remove/([^/]++)(*:290)'
                 .')'
                 .'|/forum/(?'
-                    .'|([a-z0-9\\-]*)\\-([^/]++)(*:298)'
+                    .'|([a-z0-9\\-]*)\\-([^/]++)(*:332)'
                     .'|delete(?'
-                        .'|Subject\\-([^/]++)(*:332)'
-                        .'|Comment\\-([^/]++)(*:357)'
+                        .'|Subject\\-([^/]++)(*:366)'
+                        .'|Comment\\-([^/]++)(*:391)'
                     .')'
                 .')'
             .')/?$}sDu',
@@ -69,12 +72,13 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        202 => [[['_route' => 'boutique.show', '_controller' => 'App\\Controller\\BoutiqueController::show'], ['slug', 'id'], null, null, false, true, null]],
-        233 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\CartController::add'], ['id'], null, null, false, true, null]],
-        256 => [[['_route' => 'cart_remove', '_controller' => 'App\\Controller\\CartController::remove'], ['id'], null, null, false, true, null]],
-        298 => [[['_route' => 'forum.show', '_controller' => 'App\\Controller\\ForumController::show'], ['slug', 'id'], null, null, false, true, null]],
-        332 => [[['_route' => 'forum.deleteSubject', '_controller' => 'App\\Controller\\ForumController::deleteSubject'], ['id'], ['DELETE' => 0], null, false, true, null]],
-        357 => [
+        204 => [[['_route' => 'boutique.delete', '_controller' => 'App\\Controller\\BoutiqueController::deleteProduct'], ['id'], null, null, false, true, null]],
+        235 => [[['_route' => 'boutique.show', '_controller' => 'App\\Controller\\BoutiqueController::show'], ['slug', 'id'], null, null, false, true, null]],
+        267 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\CartController::add'], ['id'], null, null, false, true, null]],
+        290 => [[['_route' => 'cart_remove', '_controller' => 'App\\Controller\\CartController::remove'], ['id'], null, null, false, true, null]],
+        332 => [[['_route' => 'forum.show', '_controller' => 'App\\Controller\\ForumController::show'], ['slug', 'id'], null, null, false, true, null]],
+        366 => [[['_route' => 'forum.deleteSubject', '_controller' => 'App\\Controller\\ForumController::deleteSubject'], ['id'], ['DELETE' => 0], null, false, true, null]],
+        391 => [
             [['_route' => 'forum.deleteComment', '_controller' => 'App\\Controller\\ForumController::deleteComment'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

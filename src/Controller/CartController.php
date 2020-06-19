@@ -52,7 +52,6 @@ class CartController extends AbstractController {
     /**
      * @Route("/panier/add/{id}", name="cart_add")
      * @param $id
-     * @param $quantity
      * @param SessionInterface $session
      * @param Request $request
      * @return RedirectResponse

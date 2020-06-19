@@ -67,7 +67,9 @@ class BoutiqueController extends AbstractController {
                 } catch (FileException $e) {
                 }
                 $manager = new ImageManager();
-                $manager->make('../public/images/boutique/produit/'.$newFilename)->fit(400,400)->save('../public/images/boutique/produit/'.$newFilename);
+                $manager->make('../public/images/boutique/produit/'.$newFilename)->resize(400,null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save('../public/images/boutique/produit/'.$newFilename);
                 $product->setImage($newFilename);
                 $product->setStatus(true);
                 $this->em->persist($product);
@@ -82,6 +84,23 @@ class BoutiqueController extends AbstractController {
             $this->addFlash('error', 'Pour ajouter un sujet de discussion, vous devez être connecté !');
             return $this->redirectToRoute('login');
         }
+    }
+
+    /**
+     * @Route("/boutique/deleteProduct/{id}", name="boutique.delete")
+     * @param Request $request
+     * @param int $id
+     * @return Response
+     */
+    public function deleteProduct(Request $request, int $id)
+    {
+        if ($this->isCsrfTokenValid('delete', $request->get('_token'))) {
+            $product = $this->repository->find($id);
+            $this->em->remove($product);
+            $this->em->flush();
+        }
+        $this->addFlash('success', 'Produit supprimé avec succès !');
+        return $this->redirectToRoute('boutique.index');
     }
 
     /**

@@ -2,6 +2,10 @@
 
 {% block title 'Article' %}
 
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+{% endblock %}
+
 {% block body %}
     <div class="jumbotron" style="margin-top: 40px;">
         <div class="row justify-content-center">
@@ -18,6 +22,15 @@
                                 <input type="number" id="quantity" name="quantity" min="1" max="500" value="1" step="1" class="text-center form-control" >
                                 <input type="submit" class="btn btn-primary stretched-link" value="Ajouter l'article au panier"></a>
                             </form>
+                        </div>
+                        <div class="row justify-content-center">
+                        {% if app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur' %}
+                            <form action="{{ path('boutique.delete', {id: article.id}) }}" method="POST" onsubmit="return confirm('Veuillez confirmer votre choix')" class="col-md-2" >
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
+                                <button class="btn btn-danger text-center delCom">Supprimer le produit</button>
+                            </form>
+                        {% endif %}
                         </div>
                     </div>
                 </div>

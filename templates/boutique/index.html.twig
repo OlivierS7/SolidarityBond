@@ -23,7 +23,9 @@
                 <br />
                 <p class="text-justify">Ici vous pouvez retrouver la boutique en ligne. Vous y trouverez des masques, des visières ainsi
                 que des gels hydroalcoolique.</p>
+                {% if app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur' %}
                 <a href="{{ path('boutique.new') }}" class="btn btn-warning">Ajouter un produit</a>
+                {% endif %}
             </div>
         </div>
     </div>

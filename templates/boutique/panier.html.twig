@@ -35,9 +35,9 @@
                         {% for item in items %}
                             <tr>
                                 <td>{{ item.product.name }}</td>
-                                <td>{{ item.product.price }}</td>
+                                <td>{{ item.product.price }} €</td>
                                 <td>{{ item.quantity }}</td>
-                                <td>{{ item.product.price * item.quantity }}</td>
+                                <td>{{ item.product.price * item.quantity }} €</td>
                                 <td><a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"></i>
                                     </a></td>
@@ -47,7 +47,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="3" class="text-right">Total des produits (TTC):</td>
-                                <td>{{ total }}</td>
+                                <td>{{ total }} €</td>
                             </tr>
                         </tfoot>
                     </table>

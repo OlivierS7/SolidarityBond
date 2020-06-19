@@ -23,6 +23,7 @@ return [
     'delete' => [[], ['_controller' => 'App\\Controller\\AuthentificationController::delete'], [], [['text', '/mon-profil']], [], []],
     'boutique.index' => [[], ['_controller' => 'App\\Controller\\BoutiqueController::index'], [], [['text', '/boutique']], [], []],
     'boutique.new' => [[], ['_controller' => 'App\\Controller\\BoutiqueController::new'], [], [['text', '/boutique/create']], [], []],
+    'boutique.delete' => [['id'], ['_controller' => 'App\\Controller\\BoutiqueController::deleteProduct'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/boutique/deleteProduct']], [], []],
     'boutique.show' => [['slug', 'id'], ['_controller' => 'App\\Controller\\BoutiqueController::show'], ['slug' => '[a-z0-9\\-]*'], [['variable', '-', '[^/]++', 'id', true], ['variable', '/', '[a-z0-9\\-]*', 'slug', true], ['text', '/boutique']], [], []],
     'panier' => [[], ['_controller' => 'App\\Controller\\CartController::index'], [], [['text', '/panier']], [], []],
     'cart_add' => [['id'], ['_controller' => 'App\\Controller\\CartController::add'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/panier/add']], [], []],
