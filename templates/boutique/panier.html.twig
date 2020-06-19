@@ -1,0 +1,72 @@
+{% extends  'layout.html.twig' %}
+
+{% block title 'Votre Panier' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-top: 40px;">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <br/>
+                <h1 class="text-center">Votre panier</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    {% if items | length > 0 %}
+        <div class="jumbotron" style="margin-top: 40px;">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Produit</th>
+                                <th>Prix (TTC)</th>
+                                <th>Quantité</th>
+                                <th>Total/Produit (TTC)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td>{{ item.product.name }}</td>
+                                <td>{{ item.product.price }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>{{ item.product.price * item.quantity }}</td>
+                                <td><a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-right">Total des produits (TTC):</td>
+                                <td>{{ total }}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="jumbotron" style="margin-top: 40px;">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <p>Votre panier est vide !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock %}

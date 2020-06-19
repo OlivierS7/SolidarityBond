@@ -13,7 +13,7 @@
                     <div class="card-text text-center">
                         <p>{{ article.description }} <br></p>
                         <img src="/images/boutique/produit/{{ article.image }}" alt="Image du produit"><br/><br/>
-                        <a href="{{ path('boutique.show', {id: article.id, slug: article.slug }) }}" class="btn btn-primary stretched-link">Ajouter l'article au panier</a>
+                        <a href="{{ path('cart_add', {id: article.id }) }}" class="btn btn-primary stretched-link">Ajouter l'article au panier</a>
                     </div>
                 </div>
                 </div>
