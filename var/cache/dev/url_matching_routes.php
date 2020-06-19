@@ -49,7 +49,10 @@ return [
                 .'|/boutique/([a-z0-9\\-]*)\\-([^/]++)(*:202)'
                 .'|/forum/(?'
                     .'|([a-z0-9\\-]*)\\-([^/]++)(*:243)'
-                    .'|([^/]++)(*:259)'
+                    .'|delete(?'
+                        .'|Subject\\-([^/]++)(*:277)'
+                        .'|Comment\\-([^/]++)(*:302)'
+                    .')'
                 .')'
             .')/?$}sDu',
     ],
@@ -63,7 +66,8 @@ return [
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         202 => [[['_route' => 'boutique.show', '_controller' => 'App\\Controller\\BoutiqueController::show'], ['slug', 'id'], null, null, false, true, null]],
         243 => [[['_route' => 'forum.show', '_controller' => 'App\\Controller\\ForumController::show'], ['slug', 'id'], null, null, false, true, null]],
-        259 => [
+        277 => [[['_route' => 'forum.deleteSubject', '_controller' => 'App\\Controller\\ForumController::deleteSubject'], ['id'], ['DELETE' => 0], null, false, true, null]],
+        302 => [
             [['_route' => 'forum.deleteComment', '_controller' => 'App\\Controller\\ForumController::deleteComment'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

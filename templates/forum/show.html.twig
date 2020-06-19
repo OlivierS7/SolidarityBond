@@ -18,6 +18,14 @@
                         <p class="card-text text-right">{{ subject.user.firstName }} {{ subject.user.lastName }}: Le {{ subject.createdAt }}</p>
                     </div>
                 </div>
+                <br />
+                {% if app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur' or app.user.email == subject.user.email %}
+                <form action="{{ path('forum.deleteSubject', {id: subject.id}) }}" method="POST" onsubmit="return confirm('Veuillez confirmer votre choix')" class="text-center" >
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
+                    <button class="btn btn-danger text-center">Supprimer le sujet de discussions</button>
+                </form>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -50,11 +58,13 @@
                     <div class="card">
                         <div class="card-header d-inline-flex top-card">
                             <h6 class="card-title title">{{ comment.user.firstName }} {{ comment.user.lastName }}: Le {{ comment.createdAt }}</h6>
+                            {% if app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur' or app.user.email == comment.user.email %}
                             <form action="{{ path('forum.deleteComment', {id: comment.id}) }}" method="POST" onsubmit="return confirm('Veuillez confirmer votre choix')" class="text-right" >
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
                                 <button class="btn btn-danger text-center delCom">X</button>
                             </form>
+                            {% endif %}
                         </div>
                         <div class="card-body">
                             <p class="card-text text-justify">{{ comment.content }}</p>
