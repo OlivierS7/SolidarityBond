@@ -20,11 +20,11 @@
                 </div>
                 <br />
                 {% if app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur' or app.user.email == subject.user.email %}
-                <form action="{{ path('forum.deleteSubject', {id: subject.id}) }}" method="POST" onsubmit="return confirm('Veuillez confirmer votre choix')" class="text-center" >
-                    <input type="hidden" name="_method" value="DELETE">
-                    <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
-                    <button class="btn btn-danger text-center">Supprimer le sujet de discussions</button>
-                </form>
+                    <form action="{{ path('forum.deleteSubject', {id: subject.id}) }}" method="POST" onsubmit="return confirm('Veuillez confirmer votre choix')" class="text-center" >
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
+                        <button class="btn btn-danger text-center">Supprimer le sujet de discussions</button>
+                    </form>
                 {% endif %}
             </div>
         </div>
@@ -53,17 +53,29 @@
         <br /><hr><br />
 
         <div class="row justify-content-center">
+            {% if comments is empty %}
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text text-justify text-center">
+                               Il n'y a pas de commentaire dans ce sujet de discussion !
+                            </p>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            {% endif %}
             {% for comment in comments %}
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-inline-flex top-card">
-                            <h6 class="card-title title" {% if subject.user.status.name == 'Administrateur' %}style="color: #ff0000; font-weight: bold"{% elseif subject.user.status.name == 'Modérateur' %}style="color: #00ff00; font-weight: bold"{% endif %}>{{ comment.user.firstName }} {{ comment.user.lastName }}: Le {{ comment.createdAt }}</h6>
+                            <h6 class="card-title title" {% if comment.user.status.name == 'Administrateur' %}style="color: #ff0000; font-weight: bold"{% elseif comment.user.status.name == 'Modérateur' %}style="color: #00ff00; font-weight: bold"{% endif %}>{{ comment.user.firstName }} {{ comment.user.lastName }}: Le {{ comment.createdAt }}</h6>
                             {% if app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur' or app.user.email == comment.user.email %}
-                            <form action="{{ path('forum.deleteComment', {id: comment.id}) }}" method="POST" onsubmit="return confirm('Veuillez confirmer votre choix')" class="text-right" >
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
-                                <button class="btn btn-danger text-center delCom">X</button>
-                            </form>
+                                <form action="{{ path('forum.deleteComment', {id: comment.id}) }}" method="POST" onsubmit="return confirm('Veuillez confirmer votre choix')" class="text-right" >
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
+                                    <button class="btn btn-danger text-center delCom">X</button>
+                                </form>
                             {% endif %}
                         </div>
                         <div class="card-body">
