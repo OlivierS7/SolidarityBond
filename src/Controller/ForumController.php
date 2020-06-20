@@ -10,6 +10,7 @@ use App\Repository\CommentsRepository;
 use App\Repository\StatusRepository;
 use App\Repository\SubjectsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,11 +53,17 @@ class ForumController extends AbstractController
 
     /**
      * @Route("/forum", name="forum.index")
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Response
      */
-    public function index(): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
-        $subjects = $this->subjectsRepository->findSujects();
+        $subjects = $paginator->paginate(
+            $this->subjectsRepository->findSujects(),
+            $request->query->getInt('page', 1),
+            6
+        );
         return $this->render('forum/index.html.twig', [
             'current_forum' => 'forum',
             'subjects' => $subjects
@@ -94,11 +101,12 @@ class ForumController extends AbstractController
     /**
      * @Route("/forum/{slug}-{id}", name="forum.show", requirements={"slug": "[a-z0-9\-]*"})
      * @param Subjects $subject
+     * @param PaginatorInterface $paginator
      * @param Request $request
      * @param string $slug
      * @return Response
      */
-    public function show(Subjects $subject, Request $request, string $slug): Response
+    public function show(Subjects $subject, PaginatorInterface $paginator, Request $request, string $slug): Response
     {
         if ($subject->getSlug() !== $slug) {
             return $this->redirectToRoute('forum.show', [
@@ -108,7 +116,11 @@ class ForumController extends AbstractController
         }
         $user = $this->getUser();
         if ($user) {
-            $comments = $this->commentsRepository->findComments($subject->getId());
+            $comments = $paginator->paginate(
+                $this->commentsRepository->findComments($subject->getId()),
+                $request->query->getInt('page', 1),
+                6
+            );
             $comment = new Comments();
             $form = $this->createForm(CommentType::class, $comment);
             $comment->setSubject($subject);

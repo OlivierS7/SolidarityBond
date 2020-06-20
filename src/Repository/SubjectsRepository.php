@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Subjects;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,12 +20,14 @@ class SubjectsRepository extends ServiceEntityRepository
         parent::__construct($registry, Subjects::class);
     }
 
-    public function findSujects(): ?array
+    /**
+     * @return Query
+     */
+    public function findSujects(): Query
     {
         return $this->createQueryBuilder('s')
             ->orderBy('s.createdAt', 'DESC')
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
 
     // /**

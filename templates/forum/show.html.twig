@@ -15,7 +15,7 @@
                         <h4 class="card-title text-warning">{{ subject.type.name }}: {{ subject.name }}</h4>
                         <p class="card-text text-justify">{{ subject.description }}
                             <br>
-                        <p class="card-text text-right">{{ subject.user.firstName }} {{ subject.user.lastName }}: Le {{ subject.createdAt }}</p>
+                        <p class="card-text text-right" {% if subject.user.status.name == 'Administrateur' %}style="color: #ff0000; font-weight: bold"{% elseif subject.user.status.name == 'Modérateur' %}style="color: #00ff00; font-weight: bold"{% endif %}>{{ subject.user.firstName }} {{ subject.user.lastName }}: Le {{ subject.createdAt }}</p>
                     </div>
                 </div>
                 <br />
@@ -57,7 +57,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-inline-flex top-card">
-                            <h6 class="card-title title">{{ comment.user.firstName }} {{ comment.user.lastName }}: Le {{ comment.createdAt }}</h6>
+                            <h6 class="card-title title" {% if subject.user.status.name == 'Administrateur' %}style="color: #ff0000; font-weight: bold"{% elseif subject.user.status.name == 'Modérateur' %}style="color: #00ff00; font-weight: bold"{% endif %}>{{ comment.user.firstName }} {{ comment.user.lastName }}: Le {{ comment.createdAt }}</h6>
                             {% if app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur' or app.user.email == comment.user.email %}
                             <form action="{{ path('forum.deleteComment', {id: comment.id}) }}" method="POST" onsubmit="return confirm('Veuillez confirmer votre choix')" class="text-right" >
                                 <input type="hidden" name="_method" value="DELETE">
@@ -73,6 +73,12 @@
                     <br />
                 </div>
             {% endfor %}
+        </div>
+        <br />
+        <div class="row justify-content-center">
+            <div class="pagination">
+                {{ knp_pagination_render(comments) }}
+            </div>
         </div>
     </div>
 {% endblock %}
