@@ -417,6 +417,9 @@
       <tag name="form.type"/>
       <argument type="service" id="security.token_storage"/>
     </service>
+    <service id="App\Form\SubjectsSearchType" class="App\Form\SubjectsSearchType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Repository\CategoriesRepository" class="App\Repository\CategoriesRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -446,6 +449,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\SubjectsRepository" class="App\Repository\SubjectsRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\SubjectsSearchRepository" class="App\Repository\SubjectsSearchRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -899,6 +906,7 @@
         <argument>App\Form\CommentType</argument>
         <argument>App\Form\ProductType</argument>
         <argument>App\Form\SubjectType</argument>
+        <argument>App\Form\SubjectsSearchType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -1240,7 +1248,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.09UEte4"/>
+      <argument type="service" id=".service_locator.NmwRhNE"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4529,7 +4537,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.dS6l4mX"/>
+      <argument type="service" id=".service_locator.BZO.iSg"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5257,6 +5265,8 @@
     <service id=".abstract.instanceof.App\Form\ProductType" class="App\Form\ProductType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SubjectType" class="App\Form\SubjectType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\SubjectType" class="App\Form\SubjectType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SubjectsSearchType" class="App\Form\SubjectsSearchType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SubjectsSearchType" class="App\Form\SubjectsSearchType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategoriesRepository" class="App\Repository\CategoriesRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CategoriesRepository" class="App\Repository\CategoriesRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentsRepository" class="App\Repository\CommentsRepository" autowire="true" abstract="true"/>
@@ -5273,6 +5283,8 @@
     <service id=".abstract.instanceof.App\Repository\StatusRepository" class="App\Repository\StatusRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\SubjectsRepository" class="App\Repository\SubjectsRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\SubjectsRepository" class="App\Repository\SubjectsRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\SubjectsSearchRepository" class="App\Repository\SubjectsSearchRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\SubjectsSearchRepository" class="App\Repository\SubjectsSearchRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TypesRepository" class="App\Repository\TypesRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\TypesRepository" class="App\Repository\TypesRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" abstract="true"/>
@@ -5645,13 +5657,14 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.09UEte4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.NmwRhNE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\AuthentificationType" type="service" id="App\Form\AuthentificationType"/>
         <argument key="App\Form\CommentType" type="service" id="App\Form\CommentType"/>
         <argument key="App\Form\ProductType" type="service" id="App\Form\ProductType"/>
         <argument key="App\Form\SubjectType" type="service" id="App\Form\SubjectType"/>
+        <argument key="App\Form\SubjectsSearchType" type="service" id="App\Form\SubjectsSearchType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ColorType" type="service" id="form.type.color"/>
@@ -5689,7 +5702,7 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.dS6l4mX" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.BZO.iSg" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\CategoriesRepository" type="service" id="App\Repository\CategoriesRepository"/>
@@ -5700,6 +5713,7 @@
         <argument key="App\Repository\ProductsRepository" type="service" id="App\Repository\ProductsRepository"/>
         <argument key="App\Repository\StatusRepository" type="service" id="App\Repository\StatusRepository"/>
         <argument key="App\Repository\SubjectsRepository" type="service" id="App\Repository\SubjectsRepository"/>
+        <argument key="App\Repository\SubjectsSearchRepository" type="service" id="App\Repository\SubjectsSearchRepository"/>
         <argument key="App\Repository\TypesRepository" type="service" id="App\Repository\TypesRepository"/>
         <argument key="App\Repository\UsersRepository" type="service" id="App\Repository\UsersRepository"/>
       </argument>

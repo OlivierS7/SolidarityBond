@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Comments;
 use App\Entity\Subjects;
+use App\Entity\SubjectsSearch;
 use App\Form\CommentType;
+use App\Form\SubjectsSearchType;
 use App\Form\SubjectType;
 use App\Repository\CommentsRepository;
 use App\Repository\StatusRepository;
@@ -59,14 +61,18 @@ class ForumController extends AbstractController
      */
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
+        $search = new SubjectsSearch();
+        $form = $this->createForm(SubjectsSearchType::class, $search);
+        $form->handleRequest($request);
         $subjects = $paginator->paginate(
-            $this->subjectsRepository->findSujects(),
+            $this->subjectsRepository->findSujects($search),
             $request->query->getInt('page', 1),
             6
         );
         return $this->render('forum/index.html.twig', [
             'current_forum' => 'forum',
-            'subjects' => $subjects
+            'subjects' => $subjects,
+            'form' => $form->createView()
         ]);
     }
 

@@ -3,6 +3,8 @@
 {% block title 'Forum' %}
 
 {% block css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
+
     <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
 {% endblock %}
 
@@ -18,13 +20,13 @@
             <div class="col-md-6 d-inline-flex">
                 <img class="bandeau" src="images/forum/bandeauForum.jpg" alt="BandeauForum">
             </div>
-            <div class="col-xl-4 top-text">
+            <div class="col-xl-4 top-text text-center">
                 <h4>Forum de discussion</h4>
                 <br />
                 <p class="text-justify">Ce forum est à disposition des utilisateurs connectés afin de poser des questions ou de répondre
                     à d’autres afin de promouvoir la communication et l’échange. Il sera modéré par des volontaires
                     du personnel hospitalier, soit des personnes avec de l’expérience dans le domaine qui seront heureux de vous aider. </p>
-                <center><a href="{{ path('forum.new') }}" class="btn btn-warning">Ajouter un sujet de discussion</a></center>
+                <a href="{{ path('forum.new') }}" class="btn btn-warning">Ajouter un sujet de discussion</a>
             </div>
         </div>
     </div>
@@ -48,6 +50,14 @@
             <div class="col-6 text-center">
                 <h4>Les sujets disponibles</h4>
                 <hr><br />
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6 text-center">
+                {{ form_start(form) }}
+                    {{ form_row(form.searchType) }}
+                    <button class="btn btn-warning text-center">Rechercher</button>
+                {{ form_end(form) }}
             </div>
         </div>
         <br/>
@@ -88,4 +98,11 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+    <script>
+        $('select').select2();
+    </script>
 {% endblock %}
