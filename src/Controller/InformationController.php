@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,8 +12,10 @@ class InformationController extends AbstractController {
      * @Route("/information", name="information")
      * @return Response
      */
-    public function render_information() : Response {
-      return $this->render('information/information.html.twig');
+    public function index() : Response
+    {
+        return $this->render('information/information.html.twig', [
+            'current_information' => 'information'
+        ]);
     }
-
 }

@@ -33,6 +33,7 @@ return [
     'forum.show' => [['slug', 'id'], ['_controller' => 'App\\Controller\\ForumController::show'], ['slug' => '[a-z0-9\\-]*'], [['variable', '-', '[^/]++', 'id', true], ['variable', '/', '[a-z0-9\\-]*', 'slug', true], ['text', '/forum']], [], []],
     'forum.deleteSubject' => [['id'], ['_controller' => 'App\\Controller\\ForumController::deleteSubject'], [], [['variable', '-', '[^/]++', 'id', true], ['text', '/forum/deleteSubject']], [], []],
     'forum.deleteComment' => [['id'], ['_controller' => 'App\\Controller\\ForumController::deleteComment'], [], [['variable', '-', '[^/]++', 'id', true], ['text', '/forum/deleteComment']], [], []],
+    'information' => [[], ['_controller' => 'App\\Controller\\InformationController::index'], [], [['text', '/information']], [], []],
     'cga' => [[], ['_controller' => 'App\\Controller\\LegalController::render_cga'], [], [['text', '/conditions-generales-d-achat']], [], []],
     'cgv' => [[], ['_controller' => 'App\\Controller\\LegalController::render_cgv'], [], [['text', '/conditions-generales-de-vente']], [], []],
     'cgu' => [[], ['_controller' => 'App\\Controller\\LegalController::render_cgu'], [], [['text', '/conditions-generales-d-utilisation']], [], []],

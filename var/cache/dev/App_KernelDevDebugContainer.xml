@@ -389,6 +389,13 @@
         <argument type="service" id=".service_locator.g9CqTPp.App\Controller\ForumController"/>
       </call>
     </service>
+    <service id="App\Controller\InformationController" class="App\Controller\InformationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\InformationController"/>
+      </call>
+    </service>
     <service id="App\Controller\LegalController" class="App\Controller\LegalController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -5236,6 +5243,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ForumController" class="App\Controller\ForumController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ForumController" class="App\Controller\ForumController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ForumController" class="App\Controller\ForumController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\InformationController" class="App\Controller\InformationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\InformationController" class="App\Controller\InformationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\InformationController" class="App\Controller\InformationController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LegalController" class="App\Controller\LegalController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LegalController" class="App\Controller\LegalController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LegalController" class="App\Controller\LegalController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5902,6 +5912,12 @@
     <service id=".service_locator.g9CqTPp.App\Controller\ForumController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\ForumController"/>
       <argument>App\Controller\ForumController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\InformationController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\InformationController"/>
+      <argument>App\Controller\InformationController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.g9CqTPp" method="withContext"/>
     </service>

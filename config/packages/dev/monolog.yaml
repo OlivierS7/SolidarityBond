@@ -9,10 +9,10 @@ monolog:
         # you may have to allow bigger header sizes in your Web server configuration
         #firephp:
         #    type: firephp
-        #    level: info
+        #    level: information
         #chromephp:
         #    type: chromephp
-        #    level: info
+        #    level: information
         console:
             type: console
             process_psr_3_messages: false

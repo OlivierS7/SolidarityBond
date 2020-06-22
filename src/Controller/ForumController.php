@@ -140,7 +140,7 @@ class ForumController extends AbstractController
                 'form' => $form->createView()
             ]);
         } else {
-            $this->addFlash('error', 'Pour ajouter un commentaire, vous devez être connecté !');
+            $this->addFlash('error', 'Pour accèder à un sujet, vous devez être connecté !');
             return $this->redirectToRoute('login');
         }
     }

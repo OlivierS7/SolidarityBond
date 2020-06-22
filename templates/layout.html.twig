@@ -41,7 +41,7 @@
                 </li>
                 <!-- Information -->
                 <li class="nav-item col-2 text-center">
-                    <a class="nav-link" href="#">Information</a>
+                    <a class="nav-link {% if current_information is defined and current_information == 'information' %} active {% endif %}" href="{{ path('information') }}">Information</a>
                 </li>
                 <!-- Profil (connecté) -->
                 {% if app.user %}
