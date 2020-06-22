@@ -1,0 +1,61 @@
+.gestebarriere
+{
+    width: 100%;
+    height: 355px;
+}
+
+
+
+@media screen and (max-width: 1700px) {
+    .gestebarriere
+    {
+        height: 330px;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .gestebarriere
+    {
+        height: 310px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .gestebarriere
+    {
+        height: 290px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .gestebarriere
+    {
+        width: 100%;
+        height: 100%;
+    }
+
+    .top-text
+    {
+        margin-top: 25px;
+    }
+}
+
+.lavermains
+{
+    width: 1000px;
+}
+
+.masque
+{
+    width: 1000px;
+}
+
+.lavermasque
+{
+    width: 1000px;
+}
+
+.jetermasque
+{
+    width: 1000px;
+}
