@@ -6,6 +6,7 @@ use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -15,7 +16,7 @@ use Rollerworks\Component\PasswordStrength\Validator\Constraints as RollerworksP
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository", repositoryClass=UsersRepository::class)
  * @UniqueEntity("email")
  */
-class Users implements UserInterface,\Serializable
+class Users implements UserInterface, Serializable
 {
     /**
      * @ORM\Id()

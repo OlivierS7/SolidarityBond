@@ -17,9 +17,9 @@
         <br />
         <div class="row justify-content-center">
             <div class="col-lg-4 d-inline-flex">
-                <img class="bandeau" src="images/boutique/bandeauBoutique.png" alt="BandeauBoutique">
+                <img class="bandeau" src="{{ asset('images/boutique/bandeauBoutique.png') }}" alt="BandeauBoutique">
             </div>
-            <div class="col-xl-4 top-text">
+            <div class="col-xl-4 top-text text-center">
                 <h4>Boutique en ligne</h4>
                 <br />
                 <p class="text-justify">Ici vous pouvez retrouver la boutique en ligne. Vous y trouverez des masques, des visières ainsi
@@ -55,7 +55,7 @@
         <br/>
         <div class="row">
             <div class="col-12">
-            {% for article in articles %}
+                {% for article in articles %}
                     <div class="card cardProduct">
                         <div class="card-header d-inline-flex top-card">
                             <h4 class="card-title title">{{ article.name }}</h4><h4 class="price title"> {{ article.price }} €</h4>
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-            {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>

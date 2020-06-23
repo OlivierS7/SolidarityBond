@@ -63,7 +63,7 @@ class Subjects
 
     public function __construct()
     {
-        $this->createdAt = (new \DateTime())->setTimezone(new DateTimeZone('Europe/Paris'));
+        $this->createdAt = (new DateTime())->setTimezone(new DateTimeZone('Europe/Paris'));
         $this->comments = new ArrayCollection();
     }
 

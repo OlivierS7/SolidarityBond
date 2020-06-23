@@ -16,15 +16,15 @@
         <br />
         <div class="row justify-content-center">
             <div class="col-md-6 d-inline-flex">
-                <img class="bandeau" src="images/accueil/bandeau.jpg" alt="Bandeau">
+                <img class="bandeau" src="{{ asset('images/accueil/bandeau.jpg') }}" alt="Bandeau">
             </div>
-            <div class="col-xl-4 top-text">
+            <div class="col-xl-4 top-text text-center">
                 <h4>Solidarity Bond</h4>
                 <br />
                 <p class="text-justify">Cette crise sanitaire sans précédent, mettrait encore plus à mal la France si l’ensemble des organisations ne retrouvent pas
                     un fonctionnement minimal sous peu. En l’absence, pour l’heure, de traitements médicaux cliniques, la seule possibilité pour enrayer l’épidémie et
                     sauver des vies, subsiste dans la mise en place des gestes barrières et l’acquisition d’équipements de protection. </p>
-                <center><a href="{{ path('information') }}" class="btn btn-warning">Gestes Barrières</a></center>
+                <a href="{{ path('information') }}" class="btn btn-warning">Gestes Barrières</a>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
                         <div class="carousel-item active">
                             <h4>Boutique en ligne</h4>
                             <hr><br />
-                            <img class="d-block w-100" height="400"  src="images/accueil/firstSlide.png" alt="First Slide">
+                            <img class="d-block w-100" height="400" src="{{ asset('images/accueil/firstSlide.png') }}" alt="First Slide">
                             <br />
                             <p>Vous pouvez dès à présent regarder le catalogue de la boutique. Vous pouvez acheter
                                 les articles disponibles en quantité souhaitée. Une fois, la commande passée,
@@ -49,17 +49,17 @@
                         <div class="carousel-item">
                             <h4>Forum de discussion</h4>
                             <hr><br />
-                            <img class="d-block w-100" height="400" src="images/accueil/secondSlide.png" alt="Second Slide">
+                            <img class="d-block w-100" height="400" src="{{ asset('images/accueil/secondSlide.png') }}" alt="Second Slide">
                             <br />
-                               <p>Il est à disposition des utilisateurs connectés afin de poser des questions ou de répondre
-                                   à d’autres afin de promouvoir la communication et l’échange. Il sera modéré par des volontaires
-                                   du personnel hospitalier, soit des personnes avec de l’expérience dans le domaine qui seront heureux de vous aider.
-                               </p>
+                            <p>Il est à disposition des utilisateurs connectés afin de poser des questions ou de répondre
+                                à d’autres afin de promouvoir la communication et l’échange. Il sera modéré par des volontaires
+                                du personnel hospitalier, soit des personnes avec de l’expérience dans le domaine qui seront heureux de vous aider.
+                            </p>
                         </div>
                         <div class="carousel-item">
                             <h4>Devenez Partenaire ou Sponsor</h4>
                             <hr><br />
-                            <img class="d-block w-100" height="400" src="images/accueil/thirdSlide.png" alt="Third Slide">
+                            <img class="d-block w-100" height="400" src="{{ asset('images/accueil/thirdSlide.png') }}" alt="Third Slide">
                             <br />
                             <p>Nous recherchons activement des partenaires pour effectuer une commande de visières de protection
                                 pour les aider dans leur reprise d’activité. Mais aussi un ou plusiers sponsor(s),

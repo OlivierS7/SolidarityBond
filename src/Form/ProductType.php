@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Products;
-use PhpParser\Node\Scalar\MagicConst\File;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;

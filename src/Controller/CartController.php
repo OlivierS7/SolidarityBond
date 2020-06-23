@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Form\QuantityType;
 use App\Repository\ProductsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;

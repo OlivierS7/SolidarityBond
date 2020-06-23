@@ -1,9 +1,11 @@
-.price {
+.price
+{
     position: absolute;
     right: 15px;
 }
 
-.cardProduct {
+.cardProduct
+{
 margin-bottom: 30px;
 }
 

@@ -3,7 +3,7 @@
 {% block title 'Votre Panier' %}
 
 {% block css %}
-<link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -23,13 +23,13 @@
                 <div class="col-md-10">
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th>Produit</th>
-                                <th>Prix (TTC)</th>
-                                <th>Quantité</th>
-                                <th>Total/Produit (TTC)</th>
-                                <th></th>
-                            </tr>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Prix (TTC)</th>
+                            <th>Quantité</th>
+                            <th>Total/Produit (TTC)</th>
+                            <th></th>
+                        </tr>
                         </thead>
                         <tbody>
                         {% for item in items %}
@@ -45,10 +45,10 @@
                         {% endfor %}
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <td colspan="3" class="text-right">Total des produits (TTC):</td>
-                                <td>{{ total }} €</td>
-                            </tr>
+                        <tr>
+                            <td colspan="3" class="text-right">Total des produits (TTC):</td>
+                            <td>{{ total }} €</td>
+                        </tr>
                         </tfoot>
                     </table>
                 </div>

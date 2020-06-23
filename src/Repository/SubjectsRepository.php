@@ -6,7 +6,6 @@ use App\Entity\Subjects;
 use App\Entity\SubjectsSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
-use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -31,7 +30,6 @@ class SubjectsRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('s');
 
         if ($search->getSearchType()->count() > 0) {
-            $k = 0;
             foreach ($search->getSearchType() as $k => $type) {
                 $k++;
                 $query = $query

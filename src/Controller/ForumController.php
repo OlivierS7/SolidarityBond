@@ -9,7 +9,6 @@ use App\Form\CommentType;
 use App\Form\SubjectsSearchType;
 use App\Form\SubjectType;
 use App\Repository\CommentsRepository;
-use App\Repository\StatusRepository;
 use App\Repository\SubjectsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -32,24 +31,14 @@ class ForumController extends AbstractController
     private $commentsRepository;
 
     /**
-     * @var StatusRepository
-     */
-    private $StatusRepository;
-
-    /**
      * @var EntityManagerInterface
      */
     private $em;
-    /**
-     * @var StatusRepository
-     */
-    private $statusRepository;
 
-    public function __construct(SubjectsRepository $subjectsRepository, CommentsRepository $commentsRepository, StatusRepository $statusRepository, EntityManagerInterface $em)
+    public function __construct(SubjectsRepository $subjectsRepository, CommentsRepository $commentsRepository, EntityManagerInterface $em)
     {
         $this->subjectsRepository = $subjectsRepository;
         $this->commentsRepository = $commentsRepository;
-        $this->statusRepository = $statusRepository;
         $this->em = $em;
     }
 

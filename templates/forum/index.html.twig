@@ -18,7 +18,7 @@
         <br />
         <div class="row justify-content-center">
             <div class="col-md-6 d-inline-flex">
-                <img class="bandeau" src="images/forum/bandeauForum.jpg" alt="BandeauForum">
+                <img class="bandeau" src="{{ asset('images/forum/bandeauForum.jpg') }}" alt="BandeauForum">
             </div>
             <div class="col-xl-4 top-text text-center">
                 <h4>Forum de discussion</h4>
@@ -84,7 +84,7 @@
                             </h5>
                             <p class="card-text text-justify">{{ subject.description|length > 255 ? subject.description|slice(0, 255) ~ ' …' : subject.description }}
                                 <br>
-                            <p class="card-text text-right" {% if subject.user.status.name == 'Administrateur' %}style="color: #ff0000; font-weight: bold"{% elseif subject.user.status.name == 'Modérateur' %}style="color: #00ff00; font-weight: bold"{% endif %}>{{ subject.user.firstName }} {{ subject.user.lastName }}: Le {{ subject.createdAt }}</p>
+                            <p class="card-text text-right" {% if subject.user.status.name == 'Administrateur' %} style="color: #ff0000; font-weight: bold" {% elseif subject.user.status.name == 'Modérateur' %} style="color: #00ff00; font-weight: bold" {% endif %}>{{ subject.user.firstName }} {{ subject.user.lastName }}: Le {{ subject.createdAt }}</p>
                         </div>
                     </div>
                     <br />

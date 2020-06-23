@@ -11,7 +11,7 @@ class LegalController extends AbstractController {
      * @Route("/conditions-generales-d-achat", name="cga")
      * @return Response
      */
-    public function render_cga() : Response {
+    public function cga() : Response {
       return $this->render('mentionsLegales/cga.html.twig');
     }
 
@@ -19,7 +19,7 @@ class LegalController extends AbstractController {
      * @Route("/conditions-generales-de-vente", name="cgv")
      * @return Response
      */
-    public function render_cgv() : Response {
+    public function cgv() : Response {
         return $this->render('mentionsLegales/cgv.html.twig');
     }
 
@@ -27,7 +27,7 @@ class LegalController extends AbstractController {
      * @Route("/conditions-generales-d-utilisation", name="cgu")
      * @return Response
      */
-    public function render_cgu() : Response {
+    public function cgu() : Response {
         return $this->render('mentionsLegales/cgu.html.twig');
     }
 
