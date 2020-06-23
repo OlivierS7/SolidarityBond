@@ -25,6 +25,8 @@ return [
     'boutique.new' => [[], ['_controller' => 'App\\Controller\\BoutiqueController::new'], [], [['text', '/boutique/create']], [], []],
     'boutique.delete' => [['id'], ['_controller' => 'App\\Controller\\BoutiqueController::deleteProduct'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/boutique/deleteProduct']], [], []],
     'boutique.show' => [['slug', 'id'], ['_controller' => 'App\\Controller\\BoutiqueController::show'], ['slug' => '[a-z0-9\\-]*'], [['variable', '-', '[^/]++', 'id', true], ['variable', '/', '[a-z0-9\\-]*', 'slug', true], ['text', '/boutique']], [], []],
+    'boutique.showEdit' => [['id'], ['_controller' => 'App\\Controller\\BoutiqueController::showEdit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/boutique/edit']], [], []],
+    'boutique.edit' => [['id'], ['_controller' => 'App\\Controller\\BoutiqueController::edit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/boutique/edit']], [], []],
     'panier' => [[], ['_controller' => 'App\\Controller\\CartController::index'], [], [['text', '/panier']], [], []],
     'cart_add' => [['id'], ['_controller' => 'App\\Controller\\CartController::add'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/panier/add']], [], []],
     'cart_remove' => [['id'], ['_controller' => 'App\\Controller\\CartController::remove'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/panier/remove']], [], []],

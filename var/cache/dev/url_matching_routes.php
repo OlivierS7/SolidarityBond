@@ -51,16 +51,19 @@ return [
                 .'|/boutique/(?'
                     .'|deleteProduct/([^/]++)(*:204)'
                     .'|([a-z0-9\\-]*)\\-([^/]++)(*:235)'
+                    .'|edit/([^/]++)(?'
+                        .'|(*:259)'
+                    .')'
                 .')'
                 .'|/panier/(?'
-                    .'|add/([^/]++)(*:267)'
-                    .'|remove/([^/]++)(*:290)'
+                    .'|add/([^/]++)(*:292)'
+                    .'|remove/([^/]++)(*:315)'
                 .')'
                 .'|/forum/(?'
-                    .'|([a-z0-9\\-]*)\\-([^/]++)(*:332)'
+                    .'|([a-z0-9\\-]*)\\-([^/]++)(*:357)'
                     .'|delete(?'
-                        .'|Subject\\-([^/]++)(*:366)'
-                        .'|Comment\\-([^/]++)(*:391)'
+                        .'|Subject\\-([^/]++)(*:391)'
+                        .'|Comment\\-([^/]++)(*:416)'
                     .')'
                 .')'
             .')/?$}sDu',
@@ -75,11 +78,15 @@ return [
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         204 => [[['_route' => 'boutique.delete', '_controller' => 'App\\Controller\\BoutiqueController::deleteProduct'], ['id'], null, null, false, true, null]],
         235 => [[['_route' => 'boutique.show', '_controller' => 'App\\Controller\\BoutiqueController::show'], ['slug', 'id'], null, null, false, true, null]],
-        267 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\CartController::add'], ['id'], null, null, false, true, null]],
-        290 => [[['_route' => 'cart_remove', '_controller' => 'App\\Controller\\CartController::remove'], ['id'], null, null, false, true, null]],
-        332 => [[['_route' => 'forum.show', '_controller' => 'App\\Controller\\ForumController::show'], ['slug', 'id'], null, null, false, true, null]],
-        366 => [[['_route' => 'forum.deleteSubject', '_controller' => 'App\\Controller\\ForumController::deleteSubject'], ['id'], ['DELETE' => 0], null, false, true, null]],
-        391 => [
+        259 => [
+            [['_route' => 'boutique.showEdit', '_controller' => 'App\\Controller\\BoutiqueController::showEdit'], ['id'], null, null, false, true, null],
+            [['_route' => 'boutique.edit', '_controller' => 'App\\Controller\\BoutiqueController::edit'], ['id'], null, null, false, true, null],
+        ],
+        292 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\CartController::add'], ['id'], null, null, false, true, null]],
+        315 => [[['_route' => 'cart_remove', '_controller' => 'App\\Controller\\CartController::remove'], ['id'], null, null, false, true, null]],
+        357 => [[['_route' => 'forum.show', '_controller' => 'App\\Controller\\ForumController::show'], ['slug', 'id'], null, null, false, true, null]],
+        391 => [[['_route' => 'forum.deleteSubject', '_controller' => 'App\\Controller\\ForumController::deleteSubject'], ['id'], ['DELETE' => 0], null, false, true, null]],
+        416 => [
             [['_route' => 'forum.deleteComment', '_controller' => 'App\\Controller\\ForumController::deleteComment'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

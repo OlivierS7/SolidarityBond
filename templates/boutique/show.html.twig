@@ -4,37 +4,54 @@
 
 {% block css %}
     <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/boutiqueShow.css') }}">
 {% endblock %}
 
 {% block body %}
-    <div class="jumbotron" style="margin-top: 40px;">
+    <div class="jumbotron" style="padding-top: 40px;">
+        <div class="row justify-content-center">
+            <div class="col-6 text-center">
+                <h2 class="titleName">{{ article.name }} : {{ article.price }} €</h2>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        {{ article.name }} : {{ article.price }} €
-                    </h5>
-                    <div class="card-text text-center">
-                        <p>{{ article.description }} <br></p>
-                        <img src="/images/boutique/produit/{{ article.image }}" alt="Image du produit"><br/><br/>
-                        <div class="row justify-content-center">
-                            <form class="col-md-2" action="{{ path('cart_add', {id: article.id }) }}" method="post">
-                                <input type="number" id="quantity" name="quantity" min="1" max="500" value="1" step="1" class="text-center form-control" >
-                                <input type="submit" class="btn btn-primary stretched-link" value="Ajouter l'article au panier"></a>
-                            </form>
-                        </div>
-                        <div class="row justify-content-center">
-                        {% if (app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur') and (app.user.status.name != null) %}
-                            <form action="{{ path('boutique.delete', {id: article.id}) }}" method="POST" onsubmit="return confirm('Veuillez confirmer votre choix')" class="col-md-2" >
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
-                                <button class="btn btn-danger text-center delCom">Supprimer le produit</button>
-                            </form>
-                            <a href="{{ path('boutique.showEdit', {id: article.id})}}" class="btn btn-warning text-center">Modifier le produit</a>
-                        {% endif %}
+                <div class="card cardProduct">
+                    <div class="card-body">
+                        <div class="card-text text-center">
+                            <p>{{ article.description }} <br></p>
+                            <img src="/images/boutique/produit/{{ article.image }}" alt="Image du produit"><br/><br/>
+                            <div class="row justify-content-center">
+                                <form class="col-md-4" action="{{ path('cart_add', {id: article.id }) }}" method="post">
+                                    <label for="quantity">Quantité :</label>
+                                    <input type="number" id="quantity" name="quantity" min="1" max="500" value="1" step="1" class="text-center form-control quantity" >
+                                    <input type="submit" class="btn btn-primary" value="Ajouter l'article au panier"></a>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container" style="padding-top: 40px;">
+        <div class="row justify-content-center">
+            <div class="col-4 text-center">
+                {% if (app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur') and (app.user.status.name != null) %}
+                    <form action="{{ path('boutique.edit', {id: article.id}) }}">
+                        <button class="btn btn-warning">Modifier le produit</button>
+                    </form>
+                    <br/>
+                    <form action="{{ path('boutique.delete', {id: article.id}) }}" method="POST" onsubmit="return confirm('Veuillez confirmer votre choix')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
+                        <button class="btn btn-danger">Supprimer le produit</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
