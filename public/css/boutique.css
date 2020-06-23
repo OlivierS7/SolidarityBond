@@ -1,0 +1,19 @@
+.price {
+    position: absolute;
+    right: 15px;
+}
+
+.cardProduct {
+margin-bottom: 30px;
+}
+
+.top-card
+{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.title
+{
+    padding-top: 10px;
+}

@@ -4,6 +4,7 @@
 
 {% block css %}
     <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/boutique.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -15,16 +16,16 @@
         </div>
         <br />
         <div class="row justify-content-center">
-            <div class="col-md-6 d-inline-flex">
-                <img class="img-fluid" src="images/boutique/bandeauBoutique.png" alt="BandeauBoutique">
+            <div class="col-lg-4 d-inline-flex">
+                <img class="bandeau" src="images/boutique/bandeauBoutique.png" alt="BandeauBoutique">
             </div>
-            <div class="col-xl-4 top-text" style="padding-top: 100px">
+            <div class="col-xl-4 top-text">
                 <h4>Boutique en ligne</h4>
                 <br />
                 <p class="text-justify">Ici vous pouvez retrouver la boutique en ligne. Vous y trouverez des masques, des visières ainsi
-                que des gels hydroalcoolique.</p>
-                {% if app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur' %}
-                <a href="{{ path('boutique.new') }}" class="btn btn-warning">Ajouter un produit</a>
+                    que des gels hydroalcoolique.</p>
+                {% if (app.user != null) and (app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur') %}
+                    <a href="{{ path('boutique.new') }}" class="btn btn-warning">Ajouter un produit</a>
                 {% endif %}
             </div>
         </div>
@@ -53,13 +54,13 @@
         </div>
         <br/>
         <div class="row">
+            <div class="col-12">
             {% for article in articles %}
-                <div class="col-12">
-                    <div class="card">
+                    <div class="card cardProduct">
+                        <div class="card-header d-inline-flex top-card">
+                            <h4 class="card-title title">{{ article.name }}</h4><h4 class="price title"> {{ article.price }} €</h4>
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">
-                                {{ article.name }} : {{ article.price }} €
-                            </h5>
                             <div class="card-text text-center">
                                 <p>{{ article.description }} <br></p>
                                 <img src="/images/boutique/produit/{{ article.image }}" alt="Image du produit"><br/><br/>
@@ -67,9 +68,8 @@
                             </div>
                         </div>
                     </div>
-                    <br />
-                </div>
             {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

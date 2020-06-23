@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Products;
+use App\Form\ProductEditType;
 use App\Form\ProductType;
 use App\Repository\ProductsRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -123,4 +124,37 @@ class BoutiqueController extends AbstractController {
         ]);
     }
 
+    /**
+     * @Route("/boutique/edit/{id}", name="boutique.showEdit")
+     * @param Products $product
+     * @param Request $request
+     * @return Response
+     */
+    public function showEdit(Products $product, Request $request): Response
+    {
+        $form = $this->createForm(ProductEditType::class, $product);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($product);
+            $this->em->flush();
+            $this->addFlash('success', 'Produit édité avec succès !');
+            return $this->redirectToRoute('boutique.index');
+        }
+        return $this->render('boutique/edit.html.twig', [
+            'product' => $product,
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/boutique/edit/{id}", name="boutique.edit")
+     * @param Request $request
+     * @return Response
+     */
+    public function edit(Request $request): Response {
+
+        //$product = $this->repository->find($id);
+
+        return $this->render('boutique/index.html.twig');
+    }
 }

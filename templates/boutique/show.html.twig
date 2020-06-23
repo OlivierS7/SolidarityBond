@@ -24,17 +24,17 @@
                             </form>
                         </div>
                         <div class="row justify-content-center">
-                        {% if app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur' %}
+                        {% if (app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur') and (app.user.status.name != null) %}
                             <form action="{{ path('boutique.delete', {id: article.id}) }}" method="POST" onsubmit="return confirm('Veuillez confirmer votre choix')" class="col-md-2" >
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
                                 <button class="btn btn-danger text-center delCom">Supprimer le produit</button>
                             </form>
+                            <a href="{{ path('boutique.showEdit', {id: article.id})}}" class="btn btn-warning text-center">Modifier le produit</a>
                         {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 {% endblock %}

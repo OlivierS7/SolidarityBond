@@ -1,0 +1,28 @@
+{% extends  'layout.html.twig' %}
+
+{% block title 'Editer un produit' %}
+
+{% block body %}
+    {% if app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur' %}
+        <div class="container" style="margin-top: 40px;">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <br/>
+                    <h1 class="text-center">Editer un produit</h1>
+                    <hr>
+                </div>
+            </div>
+            {{ include('boutique/formEdit.html.twig', {button: 'Editer'}) }}
+        </div>
+    {% else %}
+        <div class="container" style="margin-top: 40px;">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <br/>
+                    <h1 class="text-center">Vous n'avez pas accès à cette page !</h1>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
