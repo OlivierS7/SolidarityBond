@@ -25,12 +25,12 @@ class Contains
     private $quantity;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Orders::class)
+     * @ORM\ManyToMany(targetEntity=Orders::class, cascade={"persist"})
      */
     private $nbOrder;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Products::class)
+     * @ORM\ManyToMany(targetEntity=Products::class, cascade={"persist"})
      */
     private $nbProduct;
 

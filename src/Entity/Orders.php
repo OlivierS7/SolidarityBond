@@ -23,7 +23,7 @@ class Orders
     private $price;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="orders")
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="orders", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

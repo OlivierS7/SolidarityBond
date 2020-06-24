@@ -26,6 +26,7 @@
                     que des gels hydroalcoolique.</p>
                 {% if (app.user != null) and (app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur') %}
                     <a href="{{ path('boutique.new') }}" class="btn btn-warning">Ajouter un produit</a>
+                    <a href="{{ path('categories') }}" class="btn btn-warning">Ajouter une catégorie</a>
                 {% endif %}
             </div>
         </div>

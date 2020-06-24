@@ -2,20 +2,19 @@
 
 namespace App\Controller;
 
-use App\Entity\Contains;
 use App\Entity\Orders;
-use App\Entity\Users;
-use App\Form\ContainsType;
 use App\Form\PaymentType;
 use App\Repository\ProductsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Stripe\Exception\ApiErrorException;
+use Stripe\PaymentIntent;
+use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 class CartController extends AbstractController {
 
@@ -42,7 +41,7 @@ class CartController extends AbstractController {
             $cartData = [];
             foreach ($cart as $id => $quantity){
                 $cartData[] = [
-                    'product' => $productsRepository->find($id),
+                    'nbProduct' => $productsRepository->find($id),
                     'quantity' => $quantity
                 ];
             }
@@ -50,7 +49,7 @@ class CartController extends AbstractController {
             $total = 0;
 
             foreach ($cartData as $item) {
-                $totalItem = $item['product']->getPrice() * $item['quantity'];
+                $totalItem = $item['nbProduct']->getPrice() * $item['quantity'];
                 $total += $totalItem;
             }
 
@@ -118,48 +117,42 @@ class CartController extends AbstractController {
      * @Route("/panier/validate", name="cart_validate")
      * @param Request $request
      * @param SessionInterface $session
-     * @param Orders $order
      * @return Response
-     * @throws \Stripe\Exception\ApiErrorException
+     * @throws ApiErrorException
      */
     public function validate(Request $request, SessionInterface $session): Response {
         $total = $session->get('total', 0);
-        $items = $session->get('items', null);
+
+        //$items = $session->get('items');
+
         $order = new Orders();
-        $paymentForm = $this->createForm(PaymentType::class, $order);
-        $paymentForm->handleRequest($request);
-        if ($paymentForm->isSubmitted() && $paymentForm->isValid()) {
+        $form = $this->createForm(PaymentType::class, $order);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
             if ($total > 0) {
-                \Stripe\Stripe::setApiKey('sk_test_51GxTBBJsuHyLC9kVIso0mQs9HgizmBEy0lUYMWUfv0dB3RceSFNWAziNYxTKTB4jbhMEBN0E4w78ihNXRYRYqzbj00pH8Yov86');
-                \Stripe\PaymentIntent::create([
+                Stripe::setApiKey('sk_test_51GxTBBJsuHyLC9kVIso0mQs9HgizmBEy0lUYMWUfv0dB3RceSFNWAziNYxTKTB4jbhMEBN0E4w78ihNXRYRYqzbj00pH8Yov86');
+                PaymentIntent::create([
                     'amount' => $total * 100,
                     'currency' => 'eur',
                     'payment_method_types' => ['card'],
                     'receipt_email' => 'test@test.fr',
                     'description' => "Paiement du panier",
                 ]);
-
                 $order->setPrice($total);
-                $contain = new Contains();
-                $contain->addNbOrder($order);
-                foreach ($items as $item){
-                    $contain->setQuantity($item['quantity']);
-                    $contain->addNbProduct($item['product']);
-                    $this->em->persist($contain);
-                    $this->em->flush();
-                    $this->em->clear($contain);
-                }
                 $this->em->persist($order);
                 $this->em->flush();
-                //$session->set('cart', []);
+
+                //Vider le cart
+
                 $this->addFlash('success', 'Paiement effectué avec succès !');
             } else {
                 $this->addFlash('error', 'Panier vide, payement impossible !');
             }
             return $this->redirectToRoute('boutique.index');
         } else {
+
             return $this->render('boutique/payment.html.twig', [
-                'form' => $paymentForm->createView(),
+                'form' => $form->createView(),
             ]);
         }
     }

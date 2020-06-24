@@ -91,26 +91,30 @@ return [[
 '%5B%5BC%5DApp%5CController%5CBoutiqueController%23index%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CBoutiqueController%23new%5D%5B1%5D' => 10,
 '%5B%5BC%5DApp%5CController%5CBoutiqueController%23new%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CBoutiqueController%23deleteProduct%5D%5B1%5D' => 11,
-'%5B%5BC%5DApp%5CController%5CBoutiqueController%23deleteProduct%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CBoutiqueController%23delete%5D%5B1%5D' => 11,
+'%5B%5BC%5DApp%5CController%5CBoutiqueController%23delete%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CBoutiqueController%23show%5D%5B1%5D' => 12,
 '%5B%5BC%5DApp%5CController%5CBoutiqueController%23show%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CBoutiqueController%23showEdit%5D%5B1%5D' => 13,
-'%5B%5BC%5DApp%5CController%5CBoutiqueController%23showEdit%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CBoutiqueController%23validate%5D%5B1%5D' => 14,
-'%5B%5BC%5DApp%5CController%5CBoutiqueController%23validate%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CBoutiqueController%23edit%5D%5B1%5D' => 13,
+'%5B%5BC%5DApp%5CController%5CBoutiqueController%23edit%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CBoutiqueController%24em%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CBoutiqueController%24em%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CBoutiqueController%24repository%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CBoutiqueController%24repository%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CCartController%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CCartController%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CCartController%23index%5D%5B1%5D' => 15,
+'%5BApp%5CController%5CCartController%23__construct%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CCartController%23__construct%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CCartController%23index%5D%5B1%5D' => 14,
 '%5B%5BC%5DApp%5CController%5CCartController%23index%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CCartController%23add%5D%5B1%5D' => 16,
+'%5BApp%5CController%5CCartController%23add%5D%5B1%5D' => 15,
 '%5B%5BC%5DApp%5CController%5CCartController%23add%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CCartController%23remove%5D%5B1%5D' => 17,
+'%5BApp%5CController%5CCartController%23remove%5D%5B1%5D' => 16,
 '%5B%5BC%5DApp%5CController%5CCartController%23remove%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CCartController%23validate%5D%5B1%5D' => 17,
+'%5B%5BC%5DApp%5CController%5CCartController%23validate%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CCartController%24em%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CCartController%24em%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CForumController%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CForumController%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CForumController%23__construct%5D%5B1%5D' => 1,
@@ -129,24 +133,20 @@ return [[
 '%5B%5BC%5DApp%5CController%5CForumController%24subjectsRepository%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CForumController%24commentsRepository%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CForumController%24commentsRepository%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CForumController%24StatusRepository%5D%5B1%5D' => 1,
-'%5B%5BC%5DApp%5CController%5CForumController%24StatusRepository%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CForumController%24em%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CForumController%24em%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CForumController%24statusRepository%5D%5B1%5D' => 1,
-'%5B%5BC%5DApp%5CController%5CForumController%24statusRepository%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CInformationController%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CInformationController%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CInformationController%23index%5D%5B1%5D' => 23,
 '%5B%5BC%5DApp%5CController%5CInformationController%23index%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CLegalController%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CLegalController%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CLegalController%23render_cga%5D%5B1%5D' => 24,
-'%5B%5BC%5DApp%5CController%5CLegalController%23render_cga%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CLegalController%23render_cgv%5D%5B1%5D' => 25,
-'%5B%5BC%5DApp%5CController%5CLegalController%23render_cgv%5D%5B1%5D' => 2,
-'%5BApp%5CController%5CLegalController%23render_cgu%5D%5B1%5D' => 26,
-'%5B%5BC%5DApp%5CController%5CLegalController%23render_cgu%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CLegalController%23cga%5D%5B1%5D' => 24,
+'%5B%5BC%5DApp%5CController%5CLegalController%23cga%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CLegalController%23cgv%5D%5B1%5D' => 25,
+'%5B%5BC%5DApp%5CController%5CLegalController%23cgv%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CLegalController%23cgu%5D%5B1%5D' => 26,
+'%5B%5BC%5DApp%5CController%5CLegalController%23cgu%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CCategories%5D%5B1%5D' => 27,
 '%5B%5BC%5DApp%5CEntity%5CCategories%5D%5B1%5D' => 2,
 '%5BApp%5CEntity%5CCategories%23__construct%5D%5B1%5D' => 1,
@@ -1018,7 +1018,7 @@ return [[
 
 0 => 'N;',
 1 => [],
-2 => 1592986504,
+2 => 1593006759,
 3 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
@@ -1266,7 +1266,7 @@ return [[
                     '/boutique/edit/{id}',
                 ],
                 'name' => [
-                    'boutique.showEdit',
+                    'boutique.edit',
                 ],
             ],
         ],
@@ -1277,28 +1277,6 @@ return [[
     );
 },
 14 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
-        ],
-        null,
-        [
-            'Symfony\\Component\\Routing\\Annotation\\Route' => [
-                'path' => [
-                    '/boutique/validate',
-                ],
-                'name' => [
-                    'cart_validate',
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-15 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
@@ -1320,7 +1298,7 @@ return [[
         []
     );
 },
-16 => static function () {
+15 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
@@ -1342,7 +1320,7 @@ return [[
         []
     );
 },
-17 => static function () {
+16 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
@@ -1355,6 +1333,28 @@ return [[
                 ],
                 'name' => [
                     'cart_remove',
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+17 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/panier/validate',
+                ],
+                'name' => [
+                    'cart_validate',
                 ],
             ],
         ],

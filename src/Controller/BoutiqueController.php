@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
 use App\Entity\Products;
+use App\Form\CategoriesType;
 use App\Form\ProductEditType;
 use App\Form\ProductType;
 use App\Repository\ProductsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Intervention\Image\ImageManager;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -93,7 +96,7 @@ class BoutiqueController extends AbstractController {
      * @param int $id
      * @return Response
      */
-    public function deleteProduct(Request $request, int $id)
+    public function delete(Request $request, int $id)
     {
         if ($this->isCsrfTokenValid('delete', $request->get('_token'))) {
             $product = $this->repository->find($id);
@@ -117,7 +120,7 @@ class BoutiqueController extends AbstractController {
                 'id' => $product->getId(),
                 'slug' => $product->getSlug()
             ], 301);
-        };
+        }
         return $this->render('boutique/show.html.twig', [
             'current_boutique' => 'boutique',
             'article' => $product
@@ -125,12 +128,12 @@ class BoutiqueController extends AbstractController {
     }
 
     /**
-     * @Route("/boutique/edit/{id}", name="boutique.showEdit")
+     * @Route("/boutique/edit/{id}", name="boutique.edit")
      * @param Products $product
      * @param Request $request
      * @return Response
      */
-    public function showEdit(Products $product, Request $request): Response
+    public function edit(Products $product, Request $request): Response
     {
         $form = $this->createForm(ProductEditType::class, $product);
         $form->handleRequest($request);
@@ -142,6 +145,28 @@ class BoutiqueController extends AbstractController {
         }
         return $this->render('boutique/edit.html.twig', [
             'product' => $product,
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/boutique/categories", name="categories")
+     * @param Request $request
+     * @return RedirectResponse|Response
+     */
+    public function categories(Request $request) {
+        $category = new Categories();
+        $form = $this->createForm(CategoriesType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($category);
+            $this->em->flush();
+            $this->addFlash('success', 'Catéforie éditée avec succès !');
+            return $this->redirectToRoute('boutique.index');
+        }
+        return $this->render('/boutique/categories.html.twig', [
+            'category' => $category,
             'form' => $form->createView()
         ]);
     }

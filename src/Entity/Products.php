@@ -34,13 +34,13 @@ class Products
     private $status;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="products")
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="products", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
     /**
-     * @ORM\Column(type="string",  length=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $image;
 
