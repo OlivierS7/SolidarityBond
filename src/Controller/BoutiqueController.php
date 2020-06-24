@@ -93,7 +93,7 @@ class BoutiqueController extends AbstractController {
      * @param int $id
      * @return Response
      */
-    public function delete(Request $request, int $id)
+    public function deleteProduct(Request $request, int $id)
     {
         if ($this->isCsrfTokenValid('delete', $request->get('_token'))) {
             $product = $this->repository->find($id);
@@ -112,38 +112,32 @@ class BoutiqueController extends AbstractController {
      */
     public function show(Products $product, string $slug): Response
     {
-        $user = $this->getUser();
-        if ($user) {
-            if ($product->getSlug() !== $slug) {
-                return $this->redirectToRoute('boutique.show', [
-                    'id' => $product->getId(),
-                    'slug' => $product->getSlug()
-                ], 301);
-            }
-            return $this->render('boutique/show.html.twig', [
-                'current_boutique' => 'boutique',
-                'article' => $product
-            ]);
-        } else {
-            $this->addFlash('error', 'Pour aller sur la page d\'un article, vous devez être connecté !');
-            return $this->redirectToRoute('login');
-        }
+        if ($product->getSlug() !== $slug) {
+            return $this->redirectToRoute('boutique.show', [
+                'id' => $product->getId(),
+                'slug' => $product->getSlug()
+            ], 301);
+        };
+        return $this->render('boutique/show.html.twig', [
+            'current_boutique' => 'boutique',
+            'article' => $product
+        ]);
     }
 
     /**
-     * @Route("/boutique/edit/{id}", name="boutique.edit")
+     * @Route("/boutique/edit/{id}", name="boutique.showEdit")
      * @param Products $product
      * @param Request $request
      * @return Response
      */
-    public function edit(Products $product, Request $request): Response
+    public function showEdit(Products $product, Request $request): Response
     {
         $form = $this->createForm(ProductEditType::class, $product);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($product);
             $this->em->flush();
-            $this->addFlash('success', 'Produit modifié avec succès !');
+            $this->addFlash('success', 'Produit édité avec succès !');
             return $this->redirectToRoute('boutique.index');
         }
         return $this->render('boutique/edit.html.twig', [

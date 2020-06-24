@@ -28,7 +28,7 @@
                                 <form class="col-md-4" action="{{ path('cart_add', {id: article.id }) }}" method="post">
                                     <label for="quantity">Quantité :</label>
                                     <input type="number" id="quantity" name="quantity" min="1" max="500" value="1" step="1" class="text-center form-control quantity" >
-                                    <input type="submit" class="btn btn-primary" value="Ajouter l'article au panier">
+                                    <input type="submit" class="btn btn-primary" value="Ajouter l'article au panier"></a>
                                 </form>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
         <div class="row justify-content-center">
             <div class="col-4 text-center">
                 {% if (app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur') and (app.user.status.name != null) %}
-                    <form action="{{ path('boutique.edit', {id: article.id}) }}">
+                    <form action="{{ path('boutique.showEdit', {id: article.id}) }}">
                         <button class="btn btn-warning">Modifier le produit</button>
                     </form>
                     <br/>
