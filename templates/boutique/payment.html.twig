@@ -17,9 +17,11 @@
 
                 {{ form_start(form) }}
                     {{ form_row(form.user) }}
-
                     <div id="example4-card" class="StripeElement StripeElement--empty">
-                        <div class="__PrivateStripeElement" style="margin: 0; padding: 0; border: none; display: block; background: transparent; position: relative; opacity: 1;"><iframe allowtransparency="true" name="__privateStripeFrame18" title="Secure payment input frame" style="border: none; margin: 0; padding: 0; width: 1px; min-width: 100%; overflow: hidden; display: block; user-select: none; height: 19.2px;"></iframe><input class="__PrivateStripeElement-input" aria-hidden="true" aria-label=" " autocomplete="false" maxlength="1" style="border: none; display: block; position: absolute; height: 1px; top: 0; left: 0; padding: 0; margin: 0; width: 100%; opacity: 0; background: transparent; pointer-events: none; font-size: 16px;"></div>
+                        <div class="__PrivateStripeElement" style="margin: 0; padding: 0; border: none; display: block; background: transparent; position: relative; opacity: 1;">
+                            <iframe allowtransparency="true" name="__privateStripeFrame18" title="Secure payment input frame" style="border: none; margin: 0; padding: 0; width: 1px; min-width: 100%; overflow: hidden; display: block; user-select: none; height: 19.2px;"></iframe>
+                            <input class="__PrivateStripeElement-input" aria-hidden="true" aria-label=" " autocomplete="false" maxlength="1" style="border: none; display: block; position: absolute; height: 1px; top: 0; left: 0; padding: 0; margin: 0; width: 100%; opacity: 0; background: transparent; pointer-events: none; font-size: 16px;">
+                        </div>
                     </div>
                 <br />
                     <div class="text-center">
@@ -32,5 +34,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('payment.js') }}"></script>
+    <script src="{{ asset('js/payment.js') }}"></script>
 {% endblock %}
