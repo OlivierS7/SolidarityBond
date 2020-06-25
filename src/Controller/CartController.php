@@ -147,11 +147,7 @@ class CartController extends AbstractController {
 
                 $message = (new Swift_Message('Nouvelle commande'))
                     ->setFrom('cesisncovid@gmail.com')
-
-                    // On attribue le destinataire
                     ->setTo($order->getUser()->getEmail())
-
-                    // On crée le texte avec la vue
                     ->setBody(
                         $this->renderView(
                             'emails/contact.html.twig', [
@@ -165,11 +161,7 @@ class CartController extends AbstractController {
                     $mailer->send($message);
                     $message = (new Swift_Message('Nouvelle commande'))
                         ->setFrom('cesisncovid@gmail.com')
-
-                        // On attribue le destinataire
                         ->setTo('cesisncovid@gmail.com')
-
-                        // On crée le texte avec la vue
                         ->setBody(
                             $this->renderView(
                                 'emails/contact2.html.twig', [
@@ -184,7 +176,7 @@ class CartController extends AbstractController {
 
                 $session->set('cart', []);
 
-                $this->addFlash('success', 'Paiement effectué avec succès !');
+                $this->addFlash('success', 'Paiement effectué avec succès ! Regarder vos mails');
             } else {
                 $this->addFlash('error', 'Panier vide, payement impossible !');
             }
