@@ -1,6 +1,48 @@
 {
+    "amphp/amp": {
+        "version": "v2.4.4"
+    },
+    "amphp/byte-stream": {
+        "version": "v1.7.3"
+    },
+    "amphp/cache": {
+        "version": "v1.4.0"
+    },
+    "amphp/dns": {
+        "version": "v1.2.2"
+    },
+    "amphp/hpack": {
+        "version": "v3.1.0"
+    },
+    "amphp/http": {
+        "version": "v1.6.0"
+    },
+    "amphp/http-client": {
+        "version": "v4.4.0"
+    },
+    "amphp/parser": {
+        "version": "v1.0.0"
+    },
+    "amphp/process": {
+        "version": "v1.1.0"
+    },
+    "amphp/serialization": {
+        "version": "v1.0.0"
+    },
+    "amphp/socket": {
+        "version": "v1.1.2"
+    },
+    "amphp/sync": {
+        "version": "v1.4.0"
+    },
+    "amphp/windows-registry": {
+        "version": "v0.3.2"
+    },
     "cocur/slugify": {
         "version": "v4.0.0"
+    },
+    "daverandom/libdns": {
+        "version": "v2.0.2"
     },
     "doctrine/annotations": {
         "version": "1.0",
@@ -90,11 +132,23 @@
     "intervention/image": {
         "version": "2.5.1"
     },
+    "kelunik/certificate": {
+        "version": "v1.1.2"
+    },
     "knplabs/knp-components": {
         "version": "v2.3.6"
     },
     "knplabs/knp-paginator-bundle": {
         "version": "v5.2.0"
+    },
+    "league/uri": {
+        "version": "6.2.1"
+    },
+    "league/uri-interfaces": {
+        "version": "2.1.0"
+    },
+    "league/uri-parser": {
+        "version": "1.4.1"
     },
     "monolog/monolog": {
         "version": "2.1.0"
@@ -158,6 +212,9 @@
     },
     "stripe/stripe-php": {
         "version": "v7.37.2"
+    },
+    "swiftmailer/swiftmailer": {
+        "version": "v6.2.3"
     },
     "symfony/asset": {
         "version": "v5.1.0"
@@ -449,6 +506,20 @@
     },
     "symfony/string": {
         "version": "v5.1.0"
+    },
+    "symfony/swiftmailer-bundle": {
+        "version": "2.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "ae4d22af30bbd484506bc1817c5a3ef72c855b93"
+        },
+        "files": [
+            "./config/packages/dev/swiftmailer.yaml",
+            "./config/packages/swiftmailer.yaml",
+            "./config/packages/test/swiftmailer.yaml"
+        ]
     },
     "symfony/test-pack": {
         "version": "v1.0.6"

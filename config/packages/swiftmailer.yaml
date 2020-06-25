@@ -1,0 +1,16 @@
+swiftmailer:
+    transport:        gmail
+    username:         cesisncovid@gmail.com
+    password:         j)WvS9*f/2&;-qJ
+    host:             localhost
+    port:             465
+    encryption:       ssl
+    auth-mode:        login
+    spool:
+        type: file
+        path: /public/mail
+    stream_options:
+        ssl:
+            allow_self_signed: true
+            verify_peer: false
+            verify_peer_name: false

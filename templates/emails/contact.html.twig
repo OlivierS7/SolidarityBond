@@ -1,0 +1,34 @@
+<h3>Merci pour votre commande {{ user.firstName }}  {{ user.lastName }}</h3>
+<h4>Vous avez commandé sous cet adresse mail : {{ user.email }}</h4>
+{% if (user.address != null) %}
+<h4>Vous serez livré à l'adresse suivante : {{ user.address }}</h4>
+{% endif %}
+{% if (user.phone != null) %}
+<h4>Vous recevrez un message au {{ user.phone }} lorsque votre commande sera arrivée</h4>
+{% endif %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Produit</th>
+        <th>Prix (TTC)</th>
+        <th>Quantité</th>
+        <th>Total/Produit (TTC)</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>{{ item.nbProduct.name }}</td>
+            <td>{{ item.nbProduct.price }} €</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.nbProduct.price * item.quantity }} €</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="3" class="text-right">Total des produits (TTC):</td>
+        <td>{{ total }} €</td>
+    </tr>
+    </tfoot>
+</table>

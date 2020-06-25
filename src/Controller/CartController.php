@@ -9,6 +9,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Stripe\Exception\ApiErrorException;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
+use Swift_Mailer;
+use Swift_Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -117,13 +119,14 @@ class CartController extends AbstractController {
      * @Route("/panier/validate", name="cart_validate")
      * @param Request $request
      * @param SessionInterface $session
+     * @param Swift_Mailer $mailer
      * @return Response
      * @throws ApiErrorException
      */
-    public function validate(Request $request, SessionInterface $session): Response {
+    public function validate(Request $request, SessionInterface $session, Swift_Mailer $mailer): Response {
         $total = $session->get('total', 0);
 
-        //$items = $session->get('items');
+        $items = $session->get('items');
 
         $order = new Orders();
         $form = $this->createForm(PaymentType::class, $order);
@@ -142,7 +145,44 @@ class CartController extends AbstractController {
                 $this->em->persist($order);
                 $this->em->flush();
 
-                //Vider le cart
+                $message = (new Swift_Message('Nouvelle commande'))
+                    ->setFrom('cesisncovid@gmail.com')
+
+                    // On attribue le destinataire
+                    ->setTo($order->getUser()->getEmail())
+
+                    // On crée le texte avec la vue
+                    ->setBody(
+                        $this->renderView(
+                            'emails/contact.html.twig', [
+                                'user' => $order->getUser(),
+                                'items' => $items,
+                                'total' => $total
+                            ]
+                        ),
+                        'text/html'
+                    );
+                    $mailer->send($message);
+                    $message = (new Swift_Message('Nouvelle commande'))
+                        ->setFrom('cesisncovid@gmail.com')
+
+                        // On attribue le destinataire
+                        ->setTo('cesisncovid@gmail.com')
+
+                        // On crée le texte avec la vue
+                        ->setBody(
+                            $this->renderView(
+                                'emails/contact.html.twig', [
+                                    'user' => $order->getUser(),
+                                    'items' => $items,
+                                    'total' => $total
+                                ]
+                            ),
+                            'text/html'
+                        );
+                    $mailer->send($message);
+
+                $session->set('cart', []);
 
                 $this->addFlash('success', 'Paiement effectué avec succès !');
             } else {
