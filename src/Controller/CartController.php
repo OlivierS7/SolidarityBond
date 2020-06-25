@@ -172,7 +172,7 @@ class CartController extends AbstractController {
                         // On crée le texte avec la vue
                         ->setBody(
                             $this->renderView(
-                                'emails/contact.html.twig', [
+                                'emails/contact2.html.twig', [
                                     'user' => $order->getUser(),
                                     'items' => $items,
                                     'total' => $total

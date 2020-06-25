@@ -1,0 +1,34 @@
+<h3>L'utilisateur {{ user.firstName }}  {{ user.lastName }} a passé une commande sous l'adresse mail : {{ user.email }}</h3>
+{% if (user.address != null) %}
+<h4>Adresse du client : {{ user.address }}</h4>
+{% endif %}
+{% if (user.phone != null) %}
+<h4>Téléphone du client : {{ user.phone }}</h4>
+{% endif %}
+<h5>Commande du client :</h5>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Produit</th>
+        <th>Prix (TTC)</th>
+        <th>Quantité</th>
+        <th>Total/Produit (TTC)</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>{{ item.nbProduct.name }}</td>
+            <td>{{ item.nbProduct.price }} €</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.nbProduct.price * item.quantity }} €</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="3" class="text-right">Total des produits (TTC):</td>
+        <td>{{ total }} €</td>
+    </tr>
+    </tfoot>
+</table>
