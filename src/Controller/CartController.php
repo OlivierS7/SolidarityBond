@@ -47,14 +47,11 @@ class CartController extends AbstractController {
                     'quantity' => $quantity
                 ];
             }
-
             $total = 0;
-
             foreach ($cartData as $item) {
                 $totalItem = $item['nbProduct']->getPrice() * $item['quantity'];
                 $total += $totalItem;
             }
-
             $session->set('total', $total);
             $session->set('items', $cartData);
             return $this->render('boutique/panier.html.twig', [
@@ -125,9 +122,7 @@ class CartController extends AbstractController {
      */
     public function validate(Request $request, SessionInterface $session, Swift_Mailer $mailer): Response {
         $total = $session->get('total', 0);
-
         $items = $session->get('items');
-
         $order = new Orders();
         $form = $this->createForm(PaymentType::class, $order);
         $form->handleRequest($request);
@@ -144,7 +139,6 @@ class CartController extends AbstractController {
                 $order->setPrice($total);
                 $this->em->persist($order);
                 $this->em->flush();
-
                 $message = (new Swift_Message('Nouvelle commande'))
                     ->setFrom('cesisncovid@gmail.com')
                     ->setTo($order->getUser()->getEmail())
@@ -173,16 +167,13 @@ class CartController extends AbstractController {
                             'text/html'
                         );
                     $mailer->send($message);
-
                 $session->set('cart', []);
-
                 $this->addFlash('success', 'Paiement effectué avec succès ! Regarder vos mails');
             } else {
                 $this->addFlash('error', 'Panier vide, payement impossible !');
             }
             return $this->redirectToRoute('boutique.index');
         } else {
-
             return $this->render('boutique/payment.html.twig', [
                 'form' => $form->createView(),
             ]);

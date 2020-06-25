@@ -158,7 +158,6 @@ class BoutiqueController extends AbstractController {
         $category = new Categories();
         $form = $this->createForm(CategoriesType::class, $category);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($category);
             $this->em->flush();
