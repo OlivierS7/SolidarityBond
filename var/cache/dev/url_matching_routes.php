@@ -32,6 +32,7 @@ return [
         '/conditions-generales-d-achat' => [[['_route' => 'cga', '_controller' => 'App\\Controller\\LegalController::cga'], null, null, null, false, false, null]],
         '/conditions-generales-de-vente' => [[['_route' => 'cgv', '_controller' => 'App\\Controller\\LegalController::cgv'], null, null, null, false, false, null]],
         '/conditions-generales-d-utilisation' => [[['_route' => 'cgu', '_controller' => 'App\\Controller\\LegalController::cgu'], null, null, null, false, false, null]],
+        '/stat' => [[['_route' => 'stat', '_controller' => 'App\\Controller\\StatController::index'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

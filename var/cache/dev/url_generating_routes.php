@@ -40,4 +40,5 @@ return [
     'cga' => [[], ['_controller' => 'App\\Controller\\LegalController::cga'], [], [['text', '/conditions-generales-d-achat']], [], []],
     'cgv' => [[], ['_controller' => 'App\\Controller\\LegalController::cgv'], [], [['text', '/conditions-generales-de-vente']], [], []],
     'cgu' => [[], ['_controller' => 'App\\Controller\\LegalController::cgu'], [], [['text', '/conditions-generales-d-utilisation']], [], []],
+    'stat' => [[], ['_controller' => 'App\\Controller\\StatController::index'], [], [['text', '/stat']], [], []],
 ];
