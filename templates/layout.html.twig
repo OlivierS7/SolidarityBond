@@ -17,10 +17,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="container">
-            <ul class="navbar-nav mr-auto">
+        <div class="container w-100">
+            <ul class="navbar-nav mr-auto d-flex justify-content-around w-100">
                 <!-- Accueil -->
-                <div class="col-3 d-inline-flex justify-content-center" {% if not app.user %} style="margin-right: 50px;" {% endif %}>
+                <div class="d-inline-flex justify-content-center" {% if not app.user %} style="margin-right: 50px;" {% endif %}>
                     <a class="navbar-brand" href="{{ path('accueil') }}">
                         <svg class="bi bi-house-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="gold">
                             <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z"/>
@@ -32,32 +32,36 @@
                     </li>
                 </div>
                 <!-- Boutique -->
-                <li class="nav-item col-2 text-center">
+                <li class="nav-item text-center">
                     <a class="nav-link {% if current_boutique is defined and current_boutique == 'boutique' %} active {% endif %}" href="{{ path('boutique.index') }}">Boutique</a>
                 </li>
                 <!-- Forum -->
-                <li class="nav-item col-2 text-center">
+                <li class="nav-item text-center">
                     <a class="nav-link {% if current_forum is defined and current_forum == 'forum' %} active {% endif %}" href="{{ path('forum.index') }}">Forum</a>
                 </li>
                 <!-- Information -->
-                <li class="nav-item col-2 text-center">
+                <li class="nav-item text-center">
                     <a class="nav-link {% if current_information is defined and current_information == 'information' %} active {% endif %}" href="{{ path('information') }}">Information</a>
                 </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link {% if current_stat is defined and current_stat == 'stat' %} active {% endif %}" href="{{ path('stat') }}">Statistiques COVID-19</a>
+                </li>
+
                 <!-- Profil (connecté) -->
                 {% if app.user %}
-                    <li class="nav-item col-2 text-center">
+                    <li class="nav-item text-center">
                         <a class="nav-link {% if current_profil is defined and current_profil == 'profil' %} active {% endif %}" href="{{ path('account') }}">Profil</a>
                     </li>
                 {% endif %}
                 <!-- S'identifier -->
-                <li class="nav-item col-{% if not app.user %}3{% endif %}{% if app.user %}2{% endif %} text-center">
+                <li class="nav-item text-center">
                     {% if app.user %}
                         <a class="nav-link text-warning" href="{{ path('logout') }}">Déconnexion</a>
                     {% endif %}
                     <a {% if app.user %} hidden {% endif %} class="nav-link text-warning" href="{{ path('login') }}">Connexion</a>
                 </li>
                 <!-- Mon Panier -->
-                <div class="col-3 d-inline-flex justify-content-center" {% if not app.user %} style="margin-right: 50px;" {% endif %}>
+                <div class="d-inline-flex justify-content-center" {% if not app.user %} style="margin-right: 50px;" {% endif %}>
                     <a class="navbar-brand" href="{{ path('panier') }}">
                         <svg class="bi bi-cart-check" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="gold" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z" clip-rule="evenodd"/>
