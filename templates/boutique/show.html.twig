@@ -40,7 +40,7 @@
     <div class="container" style="padding-top: 40px;">
         <div class="row justify-content-center">
             <div class="col-4 text-center">
-                {% if (app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur') and (app.user.status.name != null) %}
+                {% if (app.user != null) and (app.user.status.name == 'Administrateur' or app.user.status.name == 'Modérateur') %}
                     <form action="{{ path('boutique.edit', {id: article.id}) }}">
                         <button class="btn btn-warning">Modifier le produit</button>
                     </form>
